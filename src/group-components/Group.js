@@ -29,10 +29,16 @@ class Group extends Component {
     const { group } = this.state
     if (!group) {
       return <div>No Group Chosen</div>
+    } else {
+      const { sport, city, state, date, time } = this.state.group
+      return (
+        <div className="group-card">
+          <h3>{sport}</h3>
+          <p>Where: {city}, {state}</p>
+          <p>When: {date}, {time}</p>
+        </div>
+      )
     }
-    return (
-      <div>There is a group in this.state</div>
-    )
   }
 }
 
