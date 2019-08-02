@@ -32,7 +32,18 @@ class Groups extends Component {
       )
     } else {
       return (
-        <p>this.state.groups is populated!</p>
+        <React.Fragment>
+          <h4>Groups</h4>
+          <ul>
+            {groups.map(group => (
+              <li key={group.id}>
+                <h3>{group.sport}</h3>
+                <p>Where: {group.city}, {group.state}</p>
+                <p>When: {group.date}, {group.time}</p>
+              </li>
+            ))}
+          </ul>
+        </React.Fragment>
       )
     }
   }
