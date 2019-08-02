@@ -9,6 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
+import Sidebar from './sidebar/Sidebar.js'
 import Group from './group-components/Group.js'
 
 import Alert from 'react-bootstrap/Alert'
@@ -44,6 +45,11 @@ class App extends Component {
             </Alert.Heading>
           </Alert>
         ))}
+        <section>
+          <Route path='/' render={() => (
+            <Sidebar/>
+          )} />
+        </section>
         <main className="container">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
