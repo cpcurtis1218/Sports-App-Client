@@ -36,7 +36,7 @@ class Groups extends Component {
           <h4>Groups</h4>
           <ul>
             {groups.map(group => (
-              <li key={group.id}>
+              <li key={group.id} className="group-card">
                 <h3>{group.sport}</h3>
                 <p>Where: {group.city}, {group.state}</p>
                 <p>When: {group.date}, {group.time}</p>
