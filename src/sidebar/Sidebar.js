@@ -6,7 +6,7 @@ import './Sidebar.scss'
 class Sidebar extends Component {
   render () {
     return (
-      <div className="sidebar">
+      <div className='sidebar'>
         <h5>View All Groups</h5>
         <h5>Add a Group</h5>
         <h5>Edit a Group</h5>
