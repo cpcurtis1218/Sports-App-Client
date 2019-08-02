@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
 
 class Groups extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      groups: []
+    }
+  }
+
   render () {
-    return (
-      <React.Fragment>
-        <p>This is the Groups Component!</p>
-      </React.Fragment>
-    )
+    const { groups } = this.state
+    if (!groups.length) {
+      return (
+        <React.Fragment>
+          <p>this.state.groups is empty</p>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <p>this.state.groups is populated!</p>
+      )
+    }
   }
 }
 export default Groups
