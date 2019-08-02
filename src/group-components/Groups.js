@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import apiUrl from '../apiConfig'
 
 class Groups extends Component {
   constructor () {
@@ -7,6 +9,17 @@ class Groups extends Component {
     this.state = {
       groups: []
     }
+  }
+
+  componentDidMount () {
+    axios({
+      url: `${apiUrl}/groups`,
+      method: 'get'
+    })
+      .then(response => this.setState({
+        groups: response.data.groups
+      }))
+      .catch(() => console.log('Something went wrong.'))
   }
 
   render () {
