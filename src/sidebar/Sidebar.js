@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container, Row, Col } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
 
 import './Sidebar.scss'
@@ -6,14 +7,14 @@ import './Sidebar.scss'
 class Sidebar extends Component {
   render () {
     return (
-      <div className='sidebar container'>
-        <div className='row'>
-          <p>View All Groups</p>
-          <p>Add a Group</p>
-          <p>Edit a Group</p>
-          <p>Delete a Group</p>
-        </div>
-      </div>
+      <Container className='sidebar'>
+        <Row>
+          <Col>View All Groups</Col>
+          <Col>Add a Group</Col>
+          <Col>Edit a Group</Col>
+          <Col>Delete a Group</Col>
+        </Row>
+      </Container>
     )
   }
 }
