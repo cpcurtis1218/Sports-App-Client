@@ -34,7 +34,7 @@ class Groups extends Component {
       return (
         <React.Fragment>
           <h4>Groups</h4>
-          <ul>
+          <ul className='groups-list'>
             {groups.map(group => (
               <li key={group.id} className="group-card">
                 <h3>{group.sport}</h3>
