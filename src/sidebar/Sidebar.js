@@ -6,11 +6,13 @@ import './Sidebar.scss'
 class Sidebar extends Component {
   render () {
     return (
-      <div className='sidebar'>
-        <h5>View All Groups</h5>
-        <h5>Add a Group</h5>
-        <h5>Edit a Group</h5>
-        <h5>Delete a Group</h5>
+      <div className='sidebar container'>
+        <div className='row'>
+          <p>View All Groups</p>
+          <p>Add a Group</p>
+          <p>Edit a Group</p>
+          <p>Delete a Group</p>
+        </div>
       </div>
     )
   }
