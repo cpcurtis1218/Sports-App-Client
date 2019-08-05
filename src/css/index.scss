@@ -4,21 +4,20 @@ body {
   padding: 0;
 }
 
-main {
-  float: left;
-  width: 75% !important;
-}
-
 .alert {
   margin: 30px;
+}
+
+.groups-list {
+  padding: 0;
 }
 
 .group-card {
   background: green;
   color: white;
-  height: 180px;
+  height: 25%;
   margin: 10px auto;
   padding: 15px;
   text-align: center;
-  width: 550px;
+  width: 90%;
 }
