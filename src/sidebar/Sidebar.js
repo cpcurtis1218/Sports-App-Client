@@ -9,9 +9,9 @@ class Sidebar extends Component {
     return (
       <Container className='sidebar'>
         <Row>
+          <Col><Link to={'/'}>Home</Link></Col>
           <Col><Link to={'/groups'}>View All Groups</Link></Col>
           <Col>Add a Group</Col>
-          <Col>Edit a Group</Col>
           <Col>Delete a Group</Col>
         </Row>
       </Container>
