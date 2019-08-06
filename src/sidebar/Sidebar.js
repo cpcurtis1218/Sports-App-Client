@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './Sidebar.scss'
 
@@ -9,7 +9,7 @@ class Sidebar extends Component {
     return (
       <Container className='sidebar'>
         <Row>
-          <Col>View All Groups</Col>
+          <Col><Link to={'/groups'}>View All Groups</Link></Col>
           <Col>Add a Group</Col>
           <Col>Edit a Group</Col>
           <Col>Delete a Group</Col>
