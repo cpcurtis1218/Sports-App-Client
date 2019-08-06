@@ -11,7 +11,7 @@ class Sidebar extends Component {
         <Row>
           <Col><Link to={'/'}>Home</Link></Col>
           <Col><Link to={'/groups'}>View All Groups</Link></Col>
-          <Col>Add a Group</Col>
+          <Col><Link to={'/add-group'}>Add a Group</Link></Col>
           <Col>Delete a Group</Col>
         </Row>
       </Container>
