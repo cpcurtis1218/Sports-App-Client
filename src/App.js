@@ -10,6 +10,8 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
 import Sidebar from './sidebar/Sidebar.js'
+
+import AddGroup from './group-components/AddGroup.js'
 import Groups from './group-components/Groups.js'
 import Group from './group-components/Group.js'
 
@@ -69,6 +71,9 @@ class App extends Component {
           )} />
           <Route exact path='/groups/:id' render={() => (
             <Group/>
+          )} />
+          <Route exact path='/add-group' render={() => (
+            <AddGroup/>
           )} />
         </main>
       </React.Fragment>
