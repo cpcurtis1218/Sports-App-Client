@@ -26,9 +26,9 @@ class AddGroup extends Component {
         <form>
           <h4>Sport:</h4>
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
-          <p>Where:</p>
+          <h4>Where:</h4>
           <input required={true} value={city} type='string' name='city' onChange={this.handleChange}/>
-          <p>When:</p>
+          <h4>When:</h4>
         </form>
       </div>
     )
