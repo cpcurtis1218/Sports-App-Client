@@ -36,6 +36,7 @@ class AddGroup extends Component {
           <input required={true} value={date} type='date' name='date' onChange={this.handleChange}/>
           <p>at</p>
           <input required={true} value={time} type='time' name='time' onChange={this.handleChange}/>
+          <br/>
           <button type='submit'>Submit</button>
         </form>
       </div>
