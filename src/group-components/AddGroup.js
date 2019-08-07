@@ -6,7 +6,8 @@ class AddGroup extends Component {
 
     this.state = {
       group: {
-        sport: ''
+        sport: '',
+        city: ''
       }
     }
   }
@@ -18,13 +19,15 @@ class AddGroup extends Component {
   }
 
   render () {
-    const { sport } = this.state.group
+    const { sport, city } = this.state.group
     return (
       <div>
         <h3>Add a new Group</h3>
         <form>
-          <h4>Sport:</h4><input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
+          <h4>Sport:</h4>
+          <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
           <p>Where:</p>
+          <input required={true} value={city} type='string' name='city' onChange={this.handleChange}/>
           <p>When:</p>
         </form>
       </div>
