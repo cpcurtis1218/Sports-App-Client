@@ -8,7 +8,8 @@ class AddGroup extends Component {
       group: {
         sport: '',
         city: '',
-        state: ''
+        state: '',
+        date: ''
       }
     }
   }
@@ -20,7 +21,7 @@ class AddGroup extends Component {
   }
 
   render () {
-    const { sport, city, state } = this.state.group
+    const { sport, city, state, date } = this.state.group
     return (
       <div>
         <h3>Add a new Group</h3>
@@ -31,6 +32,7 @@ class AddGroup extends Component {
           <input required={true} value={city} type='string' name='city' onChange={this.handleChange}/>
           <input required={true} value={state} type='string' name='state' onChange={this.handleChange}/>
           <h4>When:</h4>
+          <input required={true} value={date} type='date' name='date' onChange={this.handleChange}/>
         </form>
       </div>
     )
