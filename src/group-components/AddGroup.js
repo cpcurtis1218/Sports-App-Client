@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import apiUrl from '../apiConfig'
 
 class AddGroup extends Component {
   constructor () {
@@ -21,12 +23,31 @@ class AddGroup extends Component {
     } })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    const { group } = this.state
+
+    axios({
+      url: `${apiUrl}/groups`,
+      method: 'post',
+      data: { group }
+    })
+      .then(() => console.log('New Group Added!'))
+      .catch(() => {
+        console.log('Failed to add group')
+        this.setState({
+          group: { ...group, sport: '', city: '', state: '', date: '', time: '' }
+        })
+      })
+  }
+
   render () {
     const { sport, city, state, date, time } = this.state.group
     return (
       <div>
         <h3>Add a new Group</h3>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <h4>Sport:</h4>
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
           <h4>Where:</h4>
