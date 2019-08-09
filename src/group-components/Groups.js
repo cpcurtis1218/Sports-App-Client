@@ -22,6 +22,15 @@ class Groups extends Component {
       .catch(() => console.log('Something went wrong.'))
   }
 
+  handleDelete = id => {
+    axios({
+      url: `${apiUrl}/groups/${id}`,
+      method: 'delete'
+    })
+      .then(() => console.log('Group Deleted!'))
+      .catch(() => console.log('Nope'))
+  }
+
   render () {
     const { groups } = this.state
     if (!groups.length) {
@@ -41,7 +50,7 @@ class Groups extends Component {
                 <p>Where: {group.city}, {group.state}</p>
                 <p>When: {group.date}, {group.time}</p>
                 <p>ID: {group.id}</p>
-                <button>Delete</button>
+                <button onClick={() => this.handleDelete(group.id)}>Delete</button>
               </li>
             ))}
           </ul>
