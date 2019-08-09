@@ -41,6 +41,7 @@ class Groups extends Component {
                 <p>Where: {group.city}, {group.state}</p>
                 <p>When: {group.date}, {group.time}</p>
                 <p>ID: {group.id}</p>
+                <button>Delete</button>
               </li>
             ))}
           </ul>
