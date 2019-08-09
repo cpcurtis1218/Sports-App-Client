@@ -40,6 +40,7 @@ class Groups extends Component {
                 <h3>{group.sport}</h3>
                 <p>Where: {group.city}, {group.state}</p>
                 <p>When: {group.date}, {group.time}</p>
+                <p>ID: {group.id}</p>
               </li>
             ))}
           </ul>
