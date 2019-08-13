@@ -36,6 +36,7 @@ class Group extends Component {
           <h3>{sport}</h3>
           <p>Where: {city}, {state}</p>
           <p>When: {date}, {time}</p>
+          <button onClick={() => this.handleDelete(group.id)}>Delete</button>
         </div>
       )
     }
