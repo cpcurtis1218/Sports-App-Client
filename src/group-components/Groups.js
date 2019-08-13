@@ -51,7 +51,6 @@ class Groups extends Component {
                 <p>Where: {group.city}, {group.state}</p>
                 <p>When: {group.date}, {group.time}</p>
                 <p>ID: {group.id}</p>
-                <button onClick={() => this.handleDelete(group.id)}>Delete</button>
               </li>
             ))}
           </ul>
