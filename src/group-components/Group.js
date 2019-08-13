@@ -4,25 +4,13 @@ import apiUrl from '../apiConfig'
 import { withRouter } from 'react-router-dom'
 
 class Group extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
+    const { group } = props.location
 
     this.state = {
-      group: null
+      group
     }
-  }
-
-  componentDidMount () {
-    const { match } = this.props
-
-    axios({
-      url: `${apiUrl}/groups/${match.params.id}`,
-      method: 'get'
-    })
-      .then(response => this.setState({
-        group: response.data.group
-      }))
-      .catch(() => console.log('Something went wrong.'))
   }
 
   handleDelete = id => {
