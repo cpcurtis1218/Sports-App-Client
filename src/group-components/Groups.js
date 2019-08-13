@@ -38,7 +38,10 @@ class Groups extends Component {
           <ul className='groups-list'>
             {groups.map(group => (
               <li key={group.id} className="group-card">
-                <h3><Link to={'/groups/' + group.id}>{group.sport}</Link></h3>
+                <h3><Link to={{
+                  pathname: '/groups/' + group.id,
+                  group: group
+                }}>{group.sport}</Link></h3>
                 <p>Where: {group.city}, {group.state}</p>
                 <p>When: {group.date}, {group.time}</p>
                 <p>ID: {group.id}</p>
