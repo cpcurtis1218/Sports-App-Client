@@ -23,15 +23,6 @@ class Groups extends Component {
       .catch(() => console.log('Something went wrong.'))
   }
 
-  handleDelete = id => {
-    axios({
-      url: `${apiUrl}/groups/${id}`,
-      method: 'delete'
-    })
-      .then(() => console.log('Group Deleted!'))
-      .catch(() => console.log('Nope'))
-  }
-
   render () {
     const { groups } = this.state
     if (!groups.length) {
