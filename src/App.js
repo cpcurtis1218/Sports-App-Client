@@ -14,6 +14,7 @@ import Sidebar from './sidebar/Sidebar.js'
 import AddGroup from './group-components/AddGroup.js'
 import Groups from './group-components/Groups.js'
 import Group from './group-components/Group.js'
+import EditGroup from './group-components/EditGroup.js'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -74,6 +75,9 @@ class App extends Component {
           )} />
           <Route exact path='/add-group' render={() => (
             <AddGroup/>
+          )} />
+          <Route exact path='/groups/:id/edit' render={() => (
+            <EditGroup/>
           )} />
         </main>
       </React.Fragment>
