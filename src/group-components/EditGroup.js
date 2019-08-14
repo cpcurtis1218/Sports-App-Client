@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-// import axios from 'axios'
-// import apiUrl from '../apiConfig'
+import axios from 'axios'
+import apiUrl from '../apiConfig'
 
 class EditGroup extends Component {
   constructor (props) {
@@ -17,6 +17,25 @@ class EditGroup extends Component {
     this.setState({ group: {
       ...this.state.group, [event.target.name]: event.target.value
     } })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    const { group } = this.state
+
+    axios({
+      url: `${apiUrl}/groups/${group.id}`,
+      method: 'patch',
+      data: { group }
+    })
+      .then(() => console.log('Edit Successful!'))
+      .catch(() => {
+        console.log('Failed to add group')
+        this.setState({
+          group: { ...group, sport: '', city: '', state: '', date: '', time: '' }
+        })
+      })
   }
 
   render () {
