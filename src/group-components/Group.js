@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 class Group extends Component {
   constructor (props) {
@@ -34,6 +34,10 @@ class Group extends Component {
           <p>Where: {city}, {state}</p>
           <p>When: {date}, {time}</p>
           <button onClick={() => this.handleDelete(group.id)}>Delete</button>
+          <Link to={{
+            pathname: '/groups/' + group.id + '/edit',
+            group: group
+          }}><button>Edit</button></Link>
         </div>
       )
     }
