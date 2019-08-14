@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 // import axios from 'axios'
 // import apiUrl from '../apiConfig'
 
 class EditGroup extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
+    const { group } = props.location
 
     this.state = {
-      group: {
-        sport: '',
-        city: '',
-        state: '',
-        date: '',
-        time: ''
-      }
+      group
     }
   }
 
@@ -24,6 +20,9 @@ class EditGroup extends Component {
   }
 
   render () {
+    if (!this.state.group) {
+      return <p>No Group to Edit!</p>
+    }
     const { sport, city, state, date, time } = this.state.group
     return (
       <div>
@@ -46,4 +45,4 @@ class EditGroup extends Component {
   }
 }
 
-export default EditGroup
+export default withRouter(EditGroup)
