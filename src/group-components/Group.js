@@ -36,7 +36,7 @@ class Group extends Component {
           <button onClick={() => this.handleDelete(group.id)}>Delete</button>
           <Link to={{
             pathname: '/groups/' + group.id + '/edit',
-            group: group
+            group: this.state.group
           }}><button>Edit</button></Link>
         </div>
       )
