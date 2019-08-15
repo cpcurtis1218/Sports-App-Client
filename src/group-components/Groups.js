@@ -3,6 +3,8 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Link } from 'react-router-dom'
 
+import './Groups.scss'
+
 class Groups extends Component {
   constructor () {
     super()
