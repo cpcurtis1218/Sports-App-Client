@@ -46,7 +46,7 @@ class AddGroup extends Component {
     const { sport, city, state, date, time } = this.state.group
     return (
       <div>
-        <h3>Add a new Group</h3>
+        <h2>Add a new Group</h2>
         <form onSubmit={this.handleSubmit}>
           <h4>Sport:</h4>
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>

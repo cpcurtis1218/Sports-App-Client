@@ -30,7 +30,7 @@ class Group extends Component {
       const { sport, city, state, date, time } = this.state.group
       return (
         <div className="group-card">
-          <h3>{sport}</h3>
+          <h2>{sport}</h2>
           <p>Where: {city}, {state}</p>
           <p>When: {date}, {time}</p>
           <button onClick={() => this.handleDelete(group.id)}>Delete</button>

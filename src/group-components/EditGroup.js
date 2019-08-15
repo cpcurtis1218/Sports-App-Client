@@ -45,7 +45,7 @@ class EditGroup extends Component {
     const { sport, city, state, date, time } = this.state.group
     return (
       <div>
-        <h3>Edit Group</h3>
+        <h2>Edit Group</h2>
         <form onSubmit={this.handleSubmit}>
           <h4>Sport:</h4>
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
