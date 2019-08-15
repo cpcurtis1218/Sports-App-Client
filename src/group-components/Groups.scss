@@ -1,0 +1,15 @@
+h2, h3 {
+  text-align: center;
+}
+
+.groups-list {
+  list-style: none;
+  padding: 0;
+
+  .group-list-item {
+    border: 1px solid grey;
+    margin: 8px;
+    padding: 8px;
+  }
+
+}
