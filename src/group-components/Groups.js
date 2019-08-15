@@ -36,10 +36,10 @@ class Groups extends Component {
     } else {
       return (
         <React.Fragment>
-          <h4>Groups</h4>
+          <h2>Groups</h2>
           <ul className='groups-list'>
             {groups.map(group => (
-              <li key={group.id} className="group-card">
+              <li key={group.id} className="group-list-item">
                 <h3><Link to={{
                   pathname: '/groups/' + group.id,
                   group: group
