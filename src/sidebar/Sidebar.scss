@@ -1,3 +1,18 @@
+$sidebar-link: #034732;
+$sidebar-link-hover: #5E897C;
+
 .col {
   border: 1px solid grey;
+  height: 36px;
+
+  a {
+    color: $sidebar-link;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    &:hover {
+      color: $sidebar-link-hover;
+      text-decoration: none;
+    }
+  }
 }
