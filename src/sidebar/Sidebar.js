@@ -10,8 +10,8 @@ class Sidebar extends Component {
       <Container className='sidebar'>
         <Row>
           <Col className='text-center'><Link to={'/'}>Home</Link></Col>
-          <Col className='text-center'><Link to={'/groups'}>View All Groups</Link></Col>
-          <Col className='text-center'><Link to={'/add-group'}>Add a Group</Link></Col>
+          <Col className='text-center'><Link to={'/groups'}>All Groups</Link></Col>
+          <Col className='text-center'><Link to={'/add-group'}>New Group</Link></Col>
         </Row>
       </Container>
     )
