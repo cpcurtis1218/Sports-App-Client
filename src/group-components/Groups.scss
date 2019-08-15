@@ -1,8 +1,13 @@
+$page-title: #F58A07;
 $link-color: #084887;
 $link-hover: #34699C;
 
 h2, h3 {
   text-align: center;
+}
+
+h2 {
+  color: $page-title;
 }
 
 .groups-list {
