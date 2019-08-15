@@ -3,6 +3,8 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter, Link } from 'react-router-dom'
 
+import './Groups.scss'
+
 class Group extends Component {
   constructor (props) {
     super(props)
@@ -29,7 +31,7 @@ class Group extends Component {
     } else {
       const { sport, city, state, date, time } = this.state.group
       return (
-        <div className="group-card">
+        <div className="group-component">
           <h2>{sport}</h2>
           <p>Where: {city}, {state}</p>
           <p>When: {date}, {time}</p>
