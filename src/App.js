@@ -54,7 +54,7 @@ class App extends Component {
             <Sidebar/>
           )} />
         </section>
-        <main className="container">
+        <main className="">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
