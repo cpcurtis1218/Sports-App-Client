@@ -42,13 +42,15 @@ class EditGroup extends Component {
     if (!this.state.group) {
       return <p>No Group to Edit!</p>
     }
-    const { sport, city, state, date, time } = this.state.group
+    const { about, sport, city, state, date, time } = this.state.group
     return (
       <div>
         <h2>Edit Group</h2>
         <form onSubmit={this.handleSubmit}>
           <h4>Sport:</h4>
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
+          <h4>About:</h4>
+          <textarea value={about} type='string' name='about' onChange={this.handleChange}/>
           <h4>Where:</h4>
           <input required={true} value={city} type='string' name='city' onChange={this.handleChange}/>
           <input required={true} value={state} type='string' name='state' onChange={this.handleChange}/>
