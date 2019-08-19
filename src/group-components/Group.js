@@ -29,10 +29,11 @@ class Group extends Component {
     if (!group) {
       return <div>No Group Chosen</div>
     } else {
-      const { sport, city, state, date, time } = this.state.group
+      const { about, sport, city, state, date, time } = this.state.group
       return (
         <div className="group-component">
           <h2>{sport}</h2>
+          <p>{about}</p>
           <p>Where: {city}, {state}</p>
           <p>When: {date}, {time}</p>
           <button onClick={() => this.handleDelete(group.id)}>Delete</button>
