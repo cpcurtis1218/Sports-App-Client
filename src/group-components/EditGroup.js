@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 
@@ -9,7 +9,8 @@ class EditGroup extends Component {
     const { group } = props.location
 
     this.state = {
-      group
+      group: group,
+      redirect: false
     }
   }
 
@@ -30,19 +31,28 @@ class EditGroup extends Component {
       data: { group }
     })
       .then(() => console.log('Edit Successful!'))
+      .then(() => this.setState({
+        redirect: true
+      }))
       .catch(() => {
         console.log('Failed to add group')
         this.setState({
-          group: { ...group, sport: '', city: '', state: '', date: '', time: '' }
+          group: { ...group, sport: '', city: '', state: '', date: '', time: '', about: '' }
         })
       })
   }
 
   render () {
-    if (!this.state.group) {
+    const { group, redirect } = this.state
+    if (!group) {
       return <p>No Group to Edit!</p>
+    } else if (redirect) {
+      return <Redirect to={{
+        pathname: `/groups/${group.id}`,
+        group: this.state.group
+      }}/>
     }
-    const { about, sport, city, state, date, time } = this.state.group
+    const { about, sport, city, state, date, time } = group
     return (
       <div>
         <h2>Edit Group</h2>
