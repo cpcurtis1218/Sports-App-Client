@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 
@@ -14,7 +15,8 @@ class AddGroup extends Component {
         date: '',
         time: '',
         about: ''
-      }
+      },
+      newId: null
     }
   }
 
@@ -34,7 +36,9 @@ class AddGroup extends Component {
       method: 'post',
       data: { group }
     })
-      .then(() => console.log('New Group Added!'))
+      .then(response => this.setState({
+        newId: response.data.group.id
+      }))
       .catch(() => {
         console.log('Failed to add group')
         this.setState({
@@ -44,7 +48,14 @@ class AddGroup extends Component {
   }
 
   render () {
-    const { sport, city, state, date, time, about } = this.state.group
+    const { group, newId } = this.state
+    if (newId) {
+      return <Redirect to={{
+        pathname: `/groups/${newId}`,
+        group: { ...group, id: newId }
+      }}/>
+    }
+    const { sport, city, state, date, time, about } = group
     return (
       <div>
         <h2>Add a new Group</h2>
