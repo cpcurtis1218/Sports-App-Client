@@ -39,17 +39,16 @@ class Groups extends Component {
           <h2>Groups</h2>
           <ul className='groups-list container'>
             {groups.map(group => (
-              <li key={group.id} className="group-list-item row">
-                <div className='col-2 p-0'>
+              <li key={group.id} className='group-list-item row my-2'>
+                <div className='col-2 p-2'>
                   <p>{group.time}</p>
                 </div>
-                <div className='col-10'>
+                <div className='col-10 p-2'>
                   <h3><Link to={{
                     pathname: '/groups/' + group.id,
                     group: group
                   }}>{group.sport}</Link></h3>
-                  <p>Where: {group.city}, {group.state}</p>
-                  <p>When: {group.date}, {group.time}</p>
+                  <p>{group.city}, {group.state}</p>
                   <p>ID: {group.id}</p>
                 </div>
               </li>
