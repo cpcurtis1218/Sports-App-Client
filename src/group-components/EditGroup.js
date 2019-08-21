@@ -49,7 +49,7 @@ class EditGroup extends Component {
     } else if (redirect) {
       return <Redirect to={{
         pathname: `/groups/${group.id}`,
-        group: this.state.group
+        group: group
       }}/>
     }
     const { about, sport, city, state, date, time } = group
