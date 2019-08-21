@@ -16,7 +16,7 @@ import Groups from './group-components/Groups.js'
 import Group from './group-components/Group.js'
 import EditGroup from './group-components/EditGroup.js'
 
-import Alert from 'react-bootstrap/Alert'
+// import Alert from 'react-bootstrap/Alert'
 
 class App extends Component {
   constructor () {
@@ -37,18 +37,17 @@ class App extends Component {
   }
 
   render () {
-    const { alerts, user } = this.state
-
+    const { user } = this.state
+    // {alerts.map((alert, index) => (
+    //   <Alert key={index} dismissible variant={alert.type}>
+    //     <Alert.Heading>
+    //       {alert.message}
+    //     </Alert.Heading>
+    //   </Alert>
+    // ))}
     return (
       <React.Fragment>
         <Header user={user} />
-        {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
-            <Alert.Heading>
-              {alert.message}
-            </Alert.Heading>
-          </Alert>
-        ))}
         <section>
           <Route path='/' render={() => (
             <Sidebar/>
