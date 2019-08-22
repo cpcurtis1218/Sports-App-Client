@@ -2,20 +2,23 @@ $page-title: #F58A07;
 $link-color: #084887;
 $link-hover: #34699C;
 
-h2, h3 {
-  text-align: center;
-}
-
 h2 {
   color: $page-title;
-  margin-top: 24px;
+  // margin-top: 24px;
 }
 
 .group-component {
-  font-size: 1.2rem;
-
   h2 {
-    margin-bottom: 16px;
+    color: $link-color;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
