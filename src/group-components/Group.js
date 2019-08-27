@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter, Link, Redirect } from 'react-router-dom'
+import PeopleIcon from '../assets/people-icon.png'
 
 import './Groups.scss'
 
@@ -39,16 +40,20 @@ class Group extends Component {
     return (
       <Container className='group-component p-2'>
         <Row className='group-header'>
-          <Col>
-            <h2>{sport}</h2>
+          <Col xs={9}>
             <p className='date'>{date}</p>
+            <h2>{sport}</h2>
+            <p>{city}, {state}</p>
             <p>{time}</p>
+          </Col>
+          <Col xs={3} className='justify-content-center'>
+            <span className='mr-1'>4</span>
+            <img className='people-icon' src={PeopleIcon}/>
           </Col>
         </Row>
         <Row>
           <Col>
             <p>{about}</p>
-            <p>{city}, {state}</p>
           </Col>
         </Row>
         <Row className=''>
