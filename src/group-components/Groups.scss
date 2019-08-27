@@ -10,6 +10,7 @@ h2 {
 .group-component {
   h2 {
     color: $link-color;
+    margin: 0;
   }
 
   p {
@@ -44,12 +45,12 @@ h2 {
       text-align: left;
     }
 
-    img {
-      height: 16px;
-    }
-
     p {
       margin: 0;
     }
   }
+}
+
+.people-icon {
+    height: 16px;
 }
