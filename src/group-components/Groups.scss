@@ -23,22 +23,33 @@ h2 {
 }
 
 .groups-list {
+  border-bottom: 1px solid grey;
   list-style: none;
 
-  a {
-    color: $link-color;
-
-    &:hover {
-      color: $link-hover;
-      text-decoration: none;
-    }
-  }
-
   .group-list-item {
-    border: 1px solid grey;
+    background: white;
+    border-top: 1px solid grey;
+
+    a {
+      color: $link-color;
+
+      &:hover {
+        color: $link-hover;
+        text-decoration: none;
+      }
+    }
+
+    button {
+      margin-top: 100%;
+    }
 
     h3 {
+      margin: 0;
       text-align: left;
+    }
+
+    img {
+      height: 16px;
     }
 
     p {
