@@ -53,7 +53,7 @@ class Groups extends Component {
                 </div>
                 <div className='col-2 p-2'>
                   <span className='mr-1'>4</span>
-                  <img src={PeopleIcon}/>
+                  <img className='people-icon' src={PeopleIcon}/>
                 </div>
               </li>
             ))}
