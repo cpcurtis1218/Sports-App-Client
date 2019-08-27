@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Link } from 'react-router-dom'
+import PeopleIcon from '../assets/people-icon.png'
 
 import './Groups.scss'
 
@@ -36,20 +37,23 @@ class Groups extends Component {
     } else {
       return (
         <React.Fragment>
-          <h2>Groups</h2>
-          <ul className='groups-list container'>
+          <ul className='groups-list container mt-2'>
             {groups.map(group => (
-              <li key={group.id} className='group-list-item row my-2'>
+              <li key={group.id} className='group-list-item row'>
                 <div className='col-2 p-2'>
                   <p>{group.time}</p>
                 </div>
-                <div className='col-10 p-2'>
+                <div className='col-8 p-2'>
                   <h3><Link to={{
                     pathname: '/groups/' + group.id,
                     group: group
                   }}>{group.sport}</Link></h3>
                   <p>{group.city}, {group.state}</p>
                   <p>ID: {group.id}</p>
+                </div>
+                <div className='col-2 p-2'>
+                  <span className='mr-1'>4</span>
+                  <img src={PeopleIcon}/>
                 </div>
               </li>
             ))}
