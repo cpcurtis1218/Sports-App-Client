@@ -1,14 +1,15 @@
-$sidebar-link: #034732;
-$sidebar-link-hover: #5E897C;
+$sidebar-link: #084887;
+$sidebar-link-hover: #CDCDCD;
 
 .sidebar {
+  background: $sidebar-link;
+
   .col {
-    border: 1px solid grey;
-    height: 36px;
+    height: 10vh;
+    padding: 15px;
 
     a {
-      color: $sidebar-link;
-      font-size: 1.2rem;
+      color: white;
       font-weight: bold;
 
       &:hover {
