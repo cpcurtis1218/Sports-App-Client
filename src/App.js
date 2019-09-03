@@ -72,8 +72,8 @@ class App extends Component {
           <Route exact path='/groups/:id' render={() => (
             <Group/>
           )} />
-          <Route exact path='/add-group' render={() => (
-            <AddGroup/>
+          <AuthenticatedRoute user={user} exact path='/add-group' render={() => (
+            <AddGroup user={user}/>
           )} />
           <Route exact path='/groups/:id/edit' render={() => (
             <EditGroup/>
