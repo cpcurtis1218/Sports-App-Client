@@ -36,7 +36,7 @@ class Group extends Component {
     } else if (!group) {
       return <p>No Group Found!</p>
     }
-    const userId = group.user_id
+    const ownerId = group.user_id
     const { about, sport, city, state, date, time } = group
     return (
       <Container className='group-component p-2'>
@@ -59,7 +59,7 @@ class Group extends Component {
         </Row>
         <Row className=''>
           <Col>
-            <p>Owner: {userId}</p>
+            <p>Owner: {ownerId}</p>
           </Col>
           <Col className='button-group'>
             <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
