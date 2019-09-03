@@ -68,7 +68,7 @@ class App extends Component {
             <Groups/>
           )} />
           <Route exact path='/groups/:id' render={() => (
-            <Group/>
+            <Group user={user}/>
           )} />
           <AuthenticatedRoute user={user} exact path='/add-group' render={() => (
             <AddGroup user={user}/>
