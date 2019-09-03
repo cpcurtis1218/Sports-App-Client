@@ -48,12 +48,10 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header user={user} />
-        <section>
+        <main className="">
           <Route path='/' render={() => (
             <Sidebar user={user}/>
           )} />
-        </section>
-        <main className="">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
