@@ -29,48 +29,109 @@ class Group extends Component {
 
   render () {
     const { group, redirect } = this.state
+    const { about, sport, city, state, date, time } = group
+    const ownerId = group.user_id
     if (redirect) {
       return <Redirect to={{
         pathname: '/groups/'
       }}/>
     } else if (!group) {
       return <p>No Group Found!</p>
+    } else if (!this.props.user) {
+      return (
+        <Container className='group-component p-2'>
+          <Row className='group-header'>
+            <Col xs={9}>
+              <p className='date'>{date}</p>
+              <h2>{sport}</h2>
+              <p>{city}, {state}</p>
+              <p>{time}</p>
+            </Col>
+            <Col xs={3} className='justify-content-center'>
+              <span className='mr-1'>4</span>
+              <img className='people-icon' src={PeopleIcon}/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>{about}</p>
+            </Col>
+          </Row>
+          <Row className=''>
+            <Col>
+              <p>Owner: {ownerId}</p>
+            </Col>
+            <Col className='button-group'>
+              <p>Please Sign In to Join Group!</p>
+            </Col>
+          </Row>
+        </Container>
+      )
+    } else if (this.props.user.id === ownerId) {
+      return (
+        <Container className='group-component p-2'>
+          <Row className='group-header'>
+            <Col xs={9}>
+              <p className='date'>{date}</p>
+              <h2>{sport}</h2>
+              <p>{city}, {state}</p>
+              <p>{time}</p>
+            </Col>
+            <Col xs={3} className='justify-content-center'>
+              <span className='mr-1'>4</span>
+              <img className='people-icon' src={PeopleIcon}/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>{about}</p>
+            </Col>
+          </Row>
+          <Row className=''>
+            <Col>
+              <p>Owner: {ownerId}</p>
+            </Col>
+            <Col className='button-group'>
+              <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
+              <Link to={{
+                pathname: '/groups/' + group.id + '/edit',
+                group: this.state.group
+              }}><Button variant='secondary'>Edit</Button></Link>
+            </Col>
+          </Row>
+        </Container>
+      )
+    } else {
+      return (
+        <Container className='group-component p-2'>
+          <Row className='group-header'>
+            <Col xs={9}>
+              <p className='date'>{date}</p>
+              <h2>{sport}</h2>
+              <p>{city}, {state}</p>
+              <p>{time}</p>
+            </Col>
+            <Col xs={3} className='justify-content-center'>
+              <span className='mr-1'>4</span>
+              <img className='people-icon' src={PeopleIcon}/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>{about}</p>
+            </Col>
+          </Row>
+          <Row className=''>
+            <Col>
+              <p>Owner: {ownerId}</p>
+            </Col>
+            <Col className='button-group'>
+              <Button variant='secondary'>Join</Button>
+            </Col>
+          </Row>
+        </Container>
+      )
     }
-    const ownerId = group.user_id
-    const { about, sport, city, state, date, time } = group
-    return (
-      <Container className='group-component p-2'>
-        <Row className='group-header'>
-          <Col xs={9}>
-            <p className='date'>{date}</p>
-            <h2>{sport}</h2>
-            <p>{city}, {state}</p>
-            <p>{time}</p>
-          </Col>
-          <Col xs={3} className='justify-content-center'>
-            <span className='mr-1'>4</span>
-            <img className='people-icon' src={PeopleIcon}/>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>{about}</p>
-          </Col>
-        </Row>
-        <Row className=''>
-          <Col>
-            <p>Owner: {ownerId}</p>
-          </Col>
-          <Col className='button-group'>
-            <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
-            <Link to={{
-              pathname: '/groups/' + group.id + '/edit',
-              group: this.state.group
-            }}><Button variant='secondary'>Edit</Button></Link>
-          </Col>
-        </Row>
-      </Container>
-    )
   }
 }
 
