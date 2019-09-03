@@ -31,9 +31,13 @@ class Group extends Component {
   }
 
   handleDelete = id => {
+    const { user } = this.props
     axios({
       url: `${apiUrl}/groups/${id}`,
-      method: 'delete'
+      method: 'delete',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      }
     })
       .then(() => this.setState({ redirect: true }))
       .catch(() => console.log('Nope'))
