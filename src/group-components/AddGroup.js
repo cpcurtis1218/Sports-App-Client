@@ -55,8 +55,7 @@ class AddGroup extends Component {
     const { group, newId } = this.state
     if (newId) {
       return <Redirect to={{
-        pathname: `/groups/${newId}`,
-        group: { ...group, id: newId }
+        pathname: `/groups/${newId}`
       }}/>
     }
     const { sport, city, state, date, time, about } = group
