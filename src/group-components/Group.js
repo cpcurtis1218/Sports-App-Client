@@ -36,6 +36,7 @@ class Group extends Component {
     } else if (!group) {
       return <p>No Group Found!</p>
     }
+    const userId = group.user_id
     const { about, sport, city, state, date, time } = group
     return (
       <Container className='group-component p-2'>
@@ -54,6 +55,11 @@ class Group extends Component {
         <Row>
           <Col>
             <p>{about}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p>Owner: {userId}</p>
           </Col>
         </Row>
         <Row className=''>
