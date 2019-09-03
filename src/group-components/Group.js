@@ -57,12 +57,10 @@ class Group extends Component {
             <p>{about}</p>
           </Col>
         </Row>
-        <Row>
+        <Row className=''>
           <Col>
             <p>Owner: {userId}</p>
           </Col>
-        </Row>
-        <Row className=''>
           <Col className='button-group'>
             <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
             <Link to={{
