@@ -8,14 +8,26 @@ import PeopleIcon from '../assets/people-icon.png'
 import './Groups.scss'
 
 class Group extends Component {
-  constructor (props) {
-    super(props)
-    const { group } = props.location
+  constructor () {
+    super()
 
     this.state = {
-      group: group,
+      group: null,
       redirect: false
     }
+  }
+
+  componentDidMount () {
+    const { match } = this.props
+
+    axios({
+      url: `${apiUrl}/groups/${match.params.id}`,
+      method: 'get'
+    })
+      .then(response => this.setState({
+        group: response.data.group
+      }))
+      .catch(() => console.log('Something Went Wrong'))
   }
 
   handleDelete = id => {
@@ -28,16 +40,16 @@ class Group extends Component {
   }
 
   render () {
-    const { group, redirect } = this.state
-    const { about, sport, city, state, date, time } = group
-    const ownerId = group.user_id
-    if (redirect) {
+    if (this.state.redirect) {
       return <Redirect to={{
         pathname: '/groups/'
       }}/>
-    } else if (!group) {
+    } else if (!this.state.group) {
       return <p>No Group Found!</p>
     } else if (!this.props.user) {
+      const { group } = this.state
+      const { about, sport, city, state, date, time } = group
+      const ownerId = group.user_id
       return (
         <Container className='group-component p-2'>
           <Row className='group-header'>
@@ -67,7 +79,10 @@ class Group extends Component {
           </Row>
         </Container>
       )
-    } else if (this.props.user.id === ownerId) {
+    } else if (this.props.user.id === this.state.group.user_id) {
+      const { group } = this.state
+      const { about, sport, city, state, date, time } = group
+      const ownerId = group.user_id
       return (
         <Container className='group-component p-2'>
           <Row className='group-header'>
@@ -102,6 +117,9 @@ class Group extends Component {
         </Container>
       )
     } else {
+      const { group } = this.state
+      const { about, sport, city, state, date, time } = group
+      const ownerId = group.user_id
       return (
         <Container className='group-component p-2'>
           <Row className='group-header'>
