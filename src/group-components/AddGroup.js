@@ -30,10 +30,14 @@ class AddGroup extends Component {
     event.preventDefault()
 
     const { group } = this.state
+    const { user } = this.props
 
     axios({
       url: `${apiUrl}/groups`,
       method: 'post',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      },
       data: { group }
     })
       .then(response => this.setState({
