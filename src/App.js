@@ -50,7 +50,7 @@ class App extends Component {
         <Header user={user} />
         <section>
           <Route path='/' render={() => (
-            <Sidebar/>
+            <Sidebar user={user}/>
           )} />
         </section>
         <main className="">
