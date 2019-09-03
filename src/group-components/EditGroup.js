@@ -24,10 +24,14 @@ class EditGroup extends Component {
     event.preventDefault()
 
     const { group } = this.state
+    const { user } = this.props
 
     axios({
       url: `${apiUrl}/groups/${group.id}`,
       method: 'patch',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      },
       data: { group }
     })
       .then(() => console.log('Edit Successful!'))
