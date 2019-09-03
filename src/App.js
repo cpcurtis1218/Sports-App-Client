@@ -74,7 +74,7 @@ class App extends Component {
             <AddGroup user={user}/>
           )} />
           <Route exact path='/groups/:id/edit' render={() => (
-            <EditGroup/>
+            <EditGroup user={user}/>
           )} />
         </main>
       </React.Fragment>
