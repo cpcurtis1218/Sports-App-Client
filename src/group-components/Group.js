@@ -44,14 +44,14 @@ class Group extends Component {
   }
 
   render () {
-    if (this.state.redirect) {
+    const { group, redirect } = this.state
+    if (redirect) {
       return <Redirect to={{
         pathname: '/groups/'
       }}/>
-    } else if (!this.state.group) {
+    } else if (!group) {
       return <p>No Group Found!</p>
     } else if (!this.props.user) {
-      const { group } = this.state
       const { about, sport, city, state, date, time } = group
       const ownerId = group.user_id
       return (
@@ -84,7 +84,6 @@ class Group extends Component {
         </Container>
       )
     } else if (this.props.user.id === this.state.group.user_id) {
-      const { group } = this.state
       const { about, sport, city, state, date, time } = group
       const ownerId = group.user_id
       return (
@@ -121,7 +120,6 @@ class Group extends Component {
         </Container>
       )
     } else {
-      const { group } = this.state
       const { about, sport, city, state, date, time } = group
       const ownerId = group.user_id
       return (
