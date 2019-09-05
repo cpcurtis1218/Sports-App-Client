@@ -14,7 +14,8 @@ class Group extends Component {
     this.state = {
       group: null,
       redirect: false,
-      loading: true
+      loading: true,
+      member: false
     }
   }
 
@@ -59,12 +60,13 @@ class Group extends Component {
         }
       }
     })
+      .then(() => this.setState({ member: true }))
       .then(() => console.log('Join Success!'))
       .catch(() => console.log('Join Failed'))
   }
 
   render () {
-    const { group, redirect, loading } = this.state
+    const { group, redirect, loading, member } = this.state
     let buttonGroup
 
     if (loading) {
@@ -83,6 +85,8 @@ class Group extends Component {
           }}><Button variant='secondary'>Edit</Button></Link>
         </React.Fragment>
       )
+    } else if (member) {
+      buttonGroup = <Button variant='danger'>Leave</Button>
     } else {
       buttonGroup = <Button variant='secondary' onClick={() => this.handleJoin(group.id)}>Join</Button>
     }
