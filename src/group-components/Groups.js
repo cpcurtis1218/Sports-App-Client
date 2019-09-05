@@ -45,14 +45,13 @@ class Groups extends Component {
                 </div>
                 <div className='col-8 p-2'>
                   <h3><Link to={{
-                    pathname: '/groups/' + group.id,
-                    group: group
+                    pathname: '/groups/' + group.id
                   }}>{group.sport}</Link></h3>
                   <p>{group.city}, {group.state}</p>
                   <p>ID: {group.id}</p>
                 </div>
                 <div className='col-2 p-2'>
-                  <span className='mr-1'>4</span>
+                  <span className='mr-1'>{group.users.length}</span>
                   <img className='people-icon' src={PeopleIcon}/>
                 </div>
               </li>
