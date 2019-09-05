@@ -13,7 +13,8 @@ class Group extends Component {
 
     this.state = {
       group: null,
-      redirect: false
+      redirect: false,
+      loading: true
     }
   }
 
@@ -25,7 +26,8 @@ class Group extends Component {
       method: 'get'
     })
       .then(response => this.setState({
-        group: response.data.group
+        group: response.data.group,
+        loading: false
       }))
       .catch(() => console.log('Something Went Wrong'))
   }
@@ -44,81 +46,33 @@ class Group extends Component {
   }
 
   render () {
-    const { group, redirect } = this.state
+    const { group, redirect, loading } = this.state
+    let buttonGroup
+
+    if (loading) {
+      return <p>No Group Found!</p>
+    }
+
+    if (!this.props.user) {
+      buttonGroup = <p>Please Sign In to Join Group!</p>
+    } else if (this.props.user.id === group.user_id) {
+      buttonGroup = (
+        <React.Fragment>
+          <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
+          <Link to={{
+            pathname: '/groups/' + group.id + '/edit',
+            group: this.state.group
+          }}><Button variant='secondary'>Edit</Button></Link>
+        </React.Fragment>
+      )
+    } else {
+      buttonGroup = <Button variant='secondary'>Join</Button>
+    }
+
     if (redirect) {
       return <Redirect to={{
         pathname: '/groups/'
       }}/>
-    } else if (!group) {
-      return <p>No Group Found!</p>
-    } else if (!this.props.user) {
-      const { about, sport, city, state, date, time } = group
-      const ownerId = group.user_id
-      return (
-        <Container className='group-component p-2'>
-          <Row className='group-header'>
-            <Col xs={9}>
-              <p className='date'>{date}</p>
-              <h2>{sport}</h2>
-              <p>{city}, {state}</p>
-              <p>{time}</p>
-            </Col>
-            <Col xs={3} className='justify-content-center'>
-              <span className='mr-1'>4</span>
-              <img className='people-icon' src={PeopleIcon}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>{about}</p>
-            </Col>
-          </Row>
-          <Row className=''>
-            <Col>
-              <p>Owner: {ownerId}</p>
-            </Col>
-            <Col className='button-group'>
-              <p>Please Sign In to Join Group!</p>
-            </Col>
-          </Row>
-        </Container>
-      )
-    } else if (this.props.user.id === this.state.group.user_id) {
-      const { about, sport, city, state, date, time } = group
-      const ownerId = group.user_id
-      return (
-        <Container className='group-component p-2'>
-          <Row className='group-header'>
-            <Col xs={9}>
-              <p className='date'>{date}</p>
-              <h2>{sport}</h2>
-              <p>{city}, {state}</p>
-              <p>{time}</p>
-            </Col>
-            <Col xs={3} className='justify-content-center'>
-              <span className='mr-1'>4</span>
-              <img className='people-icon' src={PeopleIcon}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>{about}</p>
-            </Col>
-          </Row>
-          <Row className=''>
-            <Col>
-              <p>Owner: {ownerId}</p>
-            </Col>
-            <Col className='button-group'>
-              <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
-              <Link to={{
-                pathname: '/groups/' + group.id + '/edit',
-                group: this.state.group
-              }}><Button variant='secondary'>Edit</Button></Link>
-            </Col>
-          </Row>
-        </Container>
-      )
     } else {
       const { about, sport, city, state, date, time } = group
       const ownerId = group.user_id
@@ -146,7 +100,7 @@ class Group extends Component {
               <p>Owner: {ownerId}</p>
             </Col>
             <Col className='button-group'>
-              <Button variant='secondary'>Join</Button>
+              {buttonGroup}
             </Col>
           </Row>
         </Container>
