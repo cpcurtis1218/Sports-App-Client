@@ -4,8 +4,8 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 
 class AddGroup extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.state = {
       group: {
@@ -14,7 +14,9 @@ class AddGroup extends Component {
         state: '',
         date: '',
         time: '',
-        about: ''
+        about: '',
+        user_id: props.user.id,
+        users: []
       },
       newId: null
     }
