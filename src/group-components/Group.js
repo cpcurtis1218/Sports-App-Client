@@ -45,6 +45,24 @@ class Group extends Component {
       .catch(() => console.log('Nope'))
   }
 
+  handleJoin = (groupId) => {
+    const { user } = this.props
+    axios({
+      url: `${apiUrl}/memberships/`,
+      method: 'post',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      },
+      data: {
+        membership: {
+          group_id: groupId
+        }
+      }
+    })
+      .then(() => console.log('Join Success!'))
+      .catch(() => console.log('Join Failed'))
+  }
+
   render () {
     const { group, redirect, loading } = this.state
     let buttonGroup
@@ -66,7 +84,7 @@ class Group extends Component {
         </React.Fragment>
       )
     } else {
-      buttonGroup = <Button variant='secondary'>Join</Button>
+      buttonGroup = <Button variant='secondary' onClick={() => this.handleJoin(group.id)}>Join</Button>
     }
 
     if (redirect) {
