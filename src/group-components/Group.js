@@ -20,17 +20,30 @@ class Group extends Component {
   }
 
   componentDidMount () {
-    const { match } = this.props
+    const { match, user } = this.props
 
-    axios({
-      url: `${apiUrl}/groups/${match.params.id}`,
-      method: 'get'
-    })
-      .then(response => this.setState({
-        group: response.data.group,
-        loading: false
-      }))
-      .catch(() => console.log('Something Went Wrong'))
+    if (user) {
+      axios({
+        url: `${apiUrl}/groups/${match.params.id}`,
+        method: 'get'
+      })
+        .then(response => this.setState({
+          group: response.data.group,
+          loading: false,
+          member: response.data.group.users.some(obj => obj.id === user.id)
+        }))
+        .catch(() => console.log('Something Went Wrong'))
+    } else {
+      axios({
+        url: `${apiUrl}/groups/${match.params.id}`,
+        method: 'get'
+      })
+        .then(response => this.setState({
+          group: response.data.group,
+          loading: false
+        }))
+        .catch(() => console.log('Something Went Wrong'))
+    }
   }
 
   handleDelete = id => {
