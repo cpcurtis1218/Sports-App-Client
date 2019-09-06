@@ -15,7 +15,7 @@ class Group extends Component {
       group: null,
       redirect: false,
       loading: true,
-      member: false
+      isMember: false
     }
   }
 
@@ -30,7 +30,7 @@ class Group extends Component {
         .then(response => this.setState({
           group: response.data.group,
           loading: false,
-          member: response.data.group.users.some(obj => obj.id === user.id)
+          isMember: response.data.group.users.some(obj => obj.id === user.id)
         }))
         .catch(() => console.log('Something Went Wrong'))
     } else {
@@ -73,13 +73,13 @@ class Group extends Component {
         }
       }
     })
-      .then(() => this.setState({ member: true }))
+      .then(() => this.setState({ isMember: true }))
       .then(() => console.log('Join Success!'))
       .catch(() => console.log('Join Failed'))
   }
 
   render () {
-    const { group, redirect, loading, member } = this.state
+    const { group, redirect, loading, isMember } = this.state
     let buttonGroup
 
     if (loading) {
@@ -98,7 +98,7 @@ class Group extends Component {
           }}><Button variant='secondary'>Edit</Button></Link>
         </React.Fragment>
       )
-    } else if (member) {
+    } else if (isMember) {
       buttonGroup = <Button variant='danger'>Leave</Button>
     } else {
       buttonGroup = <Button variant='secondary' onClick={() => this.handleJoin(group.id)}>Join</Button>
