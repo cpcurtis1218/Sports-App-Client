@@ -30,7 +30,7 @@ class Group extends Component {
         .then(response => this.setState({
           group: response.data.group,
           loading: false,
-          isMember: response.data.group.users.some(obj => obj.id === user.id)
+          isMember: response.data.group.memberships.some(obj => obj.user_id === user.id)
         }))
         .catch(() => console.log('Something Went Wrong'))
     } else {
@@ -78,6 +78,23 @@ class Group extends Component {
       .catch(() => console.log('Join Failed'))
   }
 
+  handleLeave = (groupId) => {
+    const { user } = this.props
+    const { memberships } = this.state.group
+    const memId = memberships.find((obj) => obj.user_id === user.id).id
+
+    axios({
+      url: `${apiUrl}/memberships/${memId}`,
+      method: 'delete',
+      headers: {
+        Authorization: 'Token token=' + user.token
+      }
+    })
+      .then(() => this.setState({ isMember: false }))
+      .then(() => console.log('Leave Success!'))
+      .catch(() => console.log('Join Failed'))
+  }
+
   render () {
     const { group, redirect, loading, isMember } = this.state
     let buttonGroup
@@ -99,7 +116,7 @@ class Group extends Component {
         </React.Fragment>
       )
     } else if (isMember) {
-      buttonGroup = <Button variant='danger'>Leave</Button>
+      buttonGroup = <Button variant='danger' onClick={() => this.handleLeave(group.id)}>Leave</Button>
     } else {
       buttonGroup = <Button variant='secondary' onClick={() => this.handleJoin(group.id)}>Join</Button>
     }
@@ -109,7 +126,7 @@ class Group extends Component {
         pathname: '/groups/'
       }}/>
     } else {
-      const { about, sport, city, state, date, time, users } = group
+      const { about, sport, city, state, date, time, memberships } = group
       const ownerId = group.user_id
       return (
         <Container className='group-component p-2'>
@@ -121,7 +138,7 @@ class Group extends Component {
               <p>{time}</p>
             </Col>
             <Col xs={3} className='justify-content-center'>
-              <span className='mr-1'>{users.length}</span>
+              <span className='mr-1'>{memberships.length}</span>
               <img className='people-icon' src={PeopleIcon}/>
             </Col>
           </Row>
