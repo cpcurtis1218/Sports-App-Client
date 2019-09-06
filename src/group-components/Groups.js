@@ -51,7 +51,7 @@ class Groups extends Component {
                   <p>ID: {group.id}</p>
                 </div>
                 <div className='col-2 p-2'>
-                  <span className='mr-1'>{group.users.length}</span>
+                  <span className='mr-1'>{group.memberships.length}</span>
                   <img className='people-icon' src={PeopleIcon}/>
                 </div>
               </li>
