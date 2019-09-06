@@ -109,7 +109,7 @@ class Group extends Component {
         pathname: '/groups/'
       }}/>
     } else {
-      const { about, sport, city, state, date, time } = group
+      const { about, sport, city, state, date, time, users } = group
       const ownerId = group.user_id
       return (
         <Container className='group-component p-2'>
@@ -121,7 +121,7 @@ class Group extends Component {
               <p>{time}</p>
             </Col>
             <Col xs={3} className='justify-content-center'>
-              <span className='mr-1'>4</span>
+              <span className='mr-1'>{users.length}</span>
               <img className='people-icon' src={PeopleIcon}/>
             </Col>
           </Row>
