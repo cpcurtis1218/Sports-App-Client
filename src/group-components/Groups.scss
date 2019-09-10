@@ -36,6 +36,16 @@ $link-hover: #34699C;
   label {
     margin: 12px 0 0;
   }
+
+  .time-input {
+    input {
+      width: 40%;
+    }
+
+    label {
+      margin: 0 8px;
+    }
+  }
 }
 
 .groups-list {
