@@ -22,28 +22,16 @@ class Group extends Component {
   componentDidMount () {
     const { match, user } = this.props
 
-    if (user) {
-      axios({
-        url: `${apiUrl}/groups/${match.params.id}`,
-        method: 'get'
-      })
-        .then(response => this.setState({
-          group: response.data.group,
-          loading: false,
-          isMember: response.data.group.memberships.some(obj => obj.user_id === user.id)
-        }))
-        .catch(() => console.log('Something Went Wrong'))
-    } else {
-      axios({
-        url: `${apiUrl}/groups/${match.params.id}`,
-        method: 'get'
-      })
-        .then(response => this.setState({
-          group: response.data.group,
-          loading: false
-        }))
-        .catch(() => console.log('Something Went Wrong'))
-    }
+    axios({
+      url: `${apiUrl}/groups/${match.params.id}`,
+      method: 'get'
+    })
+      .then(response => this.setState({
+        group: response.data.group,
+        loading: false,
+        isMember: user ? response.data.group.memberships.some(obj => obj.user_id === user.id) : false
+      }))
+      .catch(() => console.log('Something Went Wrong'))
   }
 
   handleDelete = id => {
