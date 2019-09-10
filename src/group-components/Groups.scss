@@ -2,11 +2,6 @@ $page-title: #F58A07;
 $link-color: #084887;
 $link-hover: #34699C;
 
-h2 {
-  color: $page-title;
-  // margin-top: 24px;
-}
-
 .group-component {
   h2 {
     color: $link-color;
@@ -20,6 +15,26 @@ h2 {
   .button-group {
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+.group-form {
+  padding: 8px;
+
+  h2 {
+    color: $page-title;
+    text-align: center;
+  }
+
+  input,
+  textarea {
+    border: 1px solid grey;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  label {
+    margin: 12px 0 0;
   }
 }
 
