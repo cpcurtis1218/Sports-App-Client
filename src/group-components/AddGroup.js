@@ -15,8 +15,7 @@ class AddGroup extends Component {
         date: '',
         time: '',
         about: '',
-        user_id: props.user.id,
-        users: []
+        user_id: props.user.id
       },
       newId: null
     }
