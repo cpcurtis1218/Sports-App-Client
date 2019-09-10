@@ -70,9 +70,11 @@ class EditGroup extends Component {
           <input required={true} value={city} type='string' name='city' onChange={this.handleChange}/>
           <input required={true} value={state} type='string' name='state' onChange={this.handleChange}/>
           <label htmlFor='date'>Time</label>
-          <input required={true} value={date} type='date' name='date' onChange={this.handleChange}/>
-          <label htmlFor='time'>at</label>
-          <input required={true} value={time} type='time' name='time' onChange={this.handleChange}/>
+          <div className='time-input'>
+            <input required={true} value={date} type='date' name='date' onChange={this.handleChange}/>
+            <label htmlFor='time'>at</label>
+            <input required={true} value={time} type='time' name='time' onChange={this.handleChange}/>
+          </div>
           <br/>
           <Button className="secondary" type='submit'>Submit</Button>
         </form>
