@@ -3,6 +3,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Link } from 'react-router-dom'
 import PeopleIcon from '../assets/people-icon.png'
+import { Container, Row, Col } from 'react-bootstrap'
 
 import './Groups.scss'
 
@@ -31,32 +32,32 @@ class Groups extends Component {
     if (!groups.length) {
       return (
         <React.Fragment>
-          <p>this.state.groups is empty</p>
+          <p className='container mt-2'>There aren&apos;t any groups!</p>
         </React.Fragment>
       )
     } else {
       return (
         <React.Fragment>
-          <ul className='groups-list container mt-2'>
+          <Container className='groups-list mt-2'>
             {groups.map(group => (
-              <li key={group.id} className='group-list-item row'>
-                <div className='col-2 p-2'>
+              <Row key={group.id} className='group-list-item'>
+                <Col xs={2} className='p-2'>
                   <p>{group.time}</p>
-                </div>
-                <div className='col-8 p-2'>
+                </Col>
+                <Col xs={8} className='p-2'>
                   <h3><Link to={{
                     pathname: '/groups/' + group.id
                   }}>{group.sport}</Link></h3>
                   <p>{group.city}, {group.state}</p>
                   <p>ID: {group.id}</p>
-                </div>
-                <div className='col-2 p-2'>
+                </Col>
+                <Col xs={2} className='p-2'>
                   <span className='mr-1'>{group.memberships.length}</span>
                   <img className='people-icon' src={PeopleIcon}/>
-                </div>
-              </li>
+                </Col>
+              </Row>
             ))}
-          </ul>
+          </Container>
         </React.Fragment>
       )
     }
