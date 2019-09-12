@@ -6,6 +6,7 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
+    <Nav.Link href="#/profile">Profile</Nav.Link>
     <Nav.Link href="#/change-password">Change Password</Nav.Link>
     <Nav.Link href="#/sign-out">Sign Out</Nav.Link>
   </React.Fragment>
