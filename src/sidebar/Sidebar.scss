@@ -25,9 +25,10 @@ $sidebar-link-hover: #CDCDCD;
     display: flex;
     flex-direction: column;
     float: left;
-    height: 100vh;
+    height: 90vh;
     margin-right: 2rem;
-    width: 10vw;
+    width: 15vw;
+    position: fixed;
 
     .col {
       flex-basis: auto;
