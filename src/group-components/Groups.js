@@ -38,7 +38,7 @@ class Groups extends Component {
     } else {
       return (
         <React.Fragment>
-          <Container className='groups-list mt-2'>
+          <Container className='groups-list'>
             {groups.map(group => (
               <Row key={group.id} className='group-list-item'>
                 <Col xs={2} className='p-2'>
