@@ -19,3 +19,18 @@ $sidebar-link-hover: #CDCDCD;
     }
   }
 }
+
+@media(min-width: 992px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    height: 100vh;
+    margin-right: 2rem;
+    width: 10vw;
+
+    .col {
+      flex-basis: auto;
+    }
+  }
+}
