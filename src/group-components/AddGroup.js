@@ -62,7 +62,7 @@ class AddGroup extends Component {
     }
     const { sport, city, state, date, time, about } = group
     return (
-      <div className="group-form">
+      <div className="group-form container">
         <h2>Create a New Group</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='sport'>Group Name</label>
