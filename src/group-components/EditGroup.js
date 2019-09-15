@@ -59,7 +59,7 @@ class EditGroup extends Component {
     }
     const { about, sport, city, state, date, time } = group
     return (
-      <div className="group-form">
+      <div className="group-form container">
         <h2>Update Group</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='sport'>Group Name</label>
