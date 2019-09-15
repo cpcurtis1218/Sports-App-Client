@@ -87,3 +87,15 @@ $link-hover: #34699C;
 .people-icon {
     height: 16px;
 }
+
+@media(min-width: 992px) {
+  .group-form,
+  .group-component,
+  .groups-list {
+    width: 60vw;
+  }
+
+  .groups-list {
+    border: 0;
+  }
+}
