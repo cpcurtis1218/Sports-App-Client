@@ -34,7 +34,7 @@ class Profile extends Component {
       const myGroups = groups.filter(group => group.user_id === this.props.user.id)
       return (
         <React.Fragment>
-          <Container className='groups-list mt-2'>
+          <Container className='groups-list'>
             <h2>My Groups:</h2>
             {myGroups.map(group => (
               <Row key={group.id} className='group-list-item'>
