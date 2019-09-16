@@ -37,8 +37,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 15% auto 0;
+  margin: 0 auto;
   max-width: 600px;
+  padding-top: 15%;
 
   h3,
   input {
