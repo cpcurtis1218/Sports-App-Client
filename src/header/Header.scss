@@ -3,3 +3,9 @@ $charcoal: #bbb;
 .navbar {
   background: white;
 }
+
+@media(min-width: 992px) {
+  .navbar {
+    height: 10vh;
+  }
+}
