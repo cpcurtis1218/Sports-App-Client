@@ -20,7 +20,7 @@ const unauthenticatedOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar sticky="top" expand="lg" variant="light">
+  <Navbar sticky="top" expand="lg" variant="dark">
     <h1>LetsGo</h1>
     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
