@@ -4,12 +4,11 @@ $error: #f08181;
 $charcoal: #ccc;
 
 body {
-  background: #FAFAFA;
-  // background: rgb(2,0,36);
-  // background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
-  // background-attachment: fixed;
-  // background-size: cover;
-  // height: 100vh;
+  background-attachment: fixed;
+  background-image: radial-gradient(circle farthest-corner at 6.6% 12%, rgba(64,0,126,1) 20.8%, rgba(0,255,160,1) 100.2% );
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif;
+  height: 100vh;
 }
 
 .flash-success,
