@@ -55,3 +55,10 @@ body {
     max-width: 200px;
   }
 }
+
+@media(min-width: 992px) {
+  main {
+    margin: 16px 18%;
+    width: 60vw;
+  }
+}
