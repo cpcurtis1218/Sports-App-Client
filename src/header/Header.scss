@@ -1,7 +1,14 @@
 $charcoal: #bbb;
 
 .navbar {
-  background: white;
+  background: #141414;
+  color: grey;
+  font-family: 'Kalam', cursive;
+
+  h1 {
+    font-family: 'Rock Salt', cursive;
+    color: #780116;
+  }
 }
 
 @media(min-width: 992px) {
