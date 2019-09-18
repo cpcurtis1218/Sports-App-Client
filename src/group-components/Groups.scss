@@ -1,6 +1,12 @@
 $page-title: #F58A07;
-$link-color: #084887;
-$link-hover: #34699C;
+$link-color: #141414;
+$link-hover: #3E3E3E;
+
+.group-component,
+.group-form,
+.groups-list {
+  background: white;
+}
 
 .group-component {
   h2 {
@@ -15,6 +21,11 @@ $link-hover: #34699C;
   .button-group {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .col,
+  .row {
+    padding: 4px;
   }
 }
 
@@ -54,9 +65,9 @@ $link-hover: #34699C;
 
   .group-list-item {
     background: white;
-    border-top: 1px solid grey;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
+    border-top: 1px solid grey;
 
     a {
       color: $link-color;
@@ -68,12 +79,14 @@ $link-hover: #34699C;
     }
 
     h3 {
-      font-size: 22px;
+      font-size: 24px;
+      font-weight: 500;
       margin: 0;
       text-align: left;
     }
 
-    p {
+    p, span {
+      color: #545454;
       font-size: 14px;
       margin: 0;
     }
@@ -92,10 +105,13 @@ $link-hover: #34699C;
   .group-form,
   .group-component,
   .groups-list {
-    width: 60vw;
+    border-radius: 2px;
+    box-shadow: 5px 5px 9px;
+    margin-left: 20vw;
+    width: 70%;
   }
 
-  .groups-list {
-    border: 0;
+  .group-component {
+    border-radius: 2px;
   }
 }
