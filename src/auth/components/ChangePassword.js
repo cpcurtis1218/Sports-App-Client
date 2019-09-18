@@ -37,7 +37,7 @@ class ChangePassword extends Component {
     const { oldPassword, newPassword } = this.state
 
     return (
-      <form className='auth-form' onSubmit={this.onChangePassword}>
+      <form className='auth-form container' onSubmit={this.onChangePassword}>
         <h3>Change Password</h3>
 
         <label htmlFor="oldpw">Old Password</label>
