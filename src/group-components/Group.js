@@ -117,7 +117,7 @@ class Group extends Component {
       const { about, sport, city, state, date, time, memberships } = group
       const ownerId = group.user_id
       return (
-        <Container className='group-component p-2'>
+        <Container className='group-component'>
           <Row className='group-header'>
             <Col xs={9}>
               <p className='date'>{date}</p>
@@ -125,7 +125,7 @@ class Group extends Component {
               <p>{city}, {state}</p>
               <p>{time}</p>
             </Col>
-            <Col xs={3} className='justify-content-center'>
+            <Col xs={3} className=''>
               <span className='mr-1'>{memberships.length}</span>
               <img className='people-icon' src={PeopleIcon}/>
             </Col>
