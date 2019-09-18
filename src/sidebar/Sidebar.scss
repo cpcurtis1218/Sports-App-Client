@@ -1,18 +1,29 @@
-$sidebar-link: #084887;
-$sidebar-link-hover: #CDCDCD;
+$sidebar-background: #780116;
+$sidebar-background-hover: #902F40;
+$sidebar-link: #C6959E;
+$sidebar-link-hover: #EEDFE2;
+
 
 .sidebar {
-  background: $sidebar-link;
+  background: $sidebar-background;
 
   .col {
     height: 10vh;
-    padding: 15px;
+    // padding: 15px;
 
     a {
-      color: white;
-      font-weight: bold;
+      align-items: center;
+      color: $sidebar-link;
+      display: flex;
+      font-family: 'Kalam', cursive;
+      font-size: 1.5rem;
+      height: 100%;
+      justify-content: center;
+      letter-spacing: 1px;
+      width: 100%;
 
       &:hover {
+        background-color: $sidebar-background-hover;
         color: $sidebar-link-hover;
         text-decoration: none;
       }
@@ -22,13 +33,12 @@ $sidebar-link-hover: #CDCDCD;
 
 @media(min-width: 992px) {
   .sidebar {
+    box-shadow: 5px 5px 9px;
     display: flex;
     flex-direction: column;
     float: left;
-    height: 90vh;
-    margin-right: 2rem;
-    position: fixed;
-    width: 15vw;
+    margin: 16px 0 0 18%;
+    width: 15%;
 
     .col {
       flex-basis: auto;
