@@ -38,15 +38,16 @@ body {
 }
 
 .auth-form {
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: 600px;
-  padding-top: 15%;
+  padding: 8px;
 
-  h3,
   input {
+    border: 1px solid grey;
+    border-radius: 2px;
     margin-bottom: 5%;
   }
 
@@ -60,5 +61,12 @@ body {
   main {
     margin: 16px 18%;
     width: 60vw;
+  }
+
+  .auth-form {
+    border-radius: 2px;
+    box-shadow: 5px 5px 9px;
+    margin-left: 20vw;
+    width: 70%;
   }
 }
