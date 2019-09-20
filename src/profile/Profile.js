@@ -37,7 +37,7 @@ class Profile extends Component {
           <Container className='groups-list'>
             <h2>My Groups:</h2>
             {myGroups.map(group => (
-              <Row key={group.id} className='group-list-item'>
+              <Row key={group.id} className='profile-list-item'>
                 <Col xs={8} className='p-2'>
                   <h3><Link to={{
                     pathname: '/groups/' + group.id
