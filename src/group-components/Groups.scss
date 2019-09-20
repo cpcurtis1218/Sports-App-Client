@@ -46,6 +46,14 @@ $link-hover: #3E3E3E;
 
   label {
     margin: 12px 0 0;
+    width: 100%;
+
+    span {
+      color: grey;
+      float: right;
+      font-size: 0.8rem;
+      padding-top: 0.4rem;
+    }
   }
 
   .time-input {
