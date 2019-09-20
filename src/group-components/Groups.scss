@@ -63,7 +63,8 @@ $link-hover: #3E3E3E;
   border-bottom: 1px solid grey;
   list-style: none;
 
-  .group-list-item {
+  .group-list-item,
+  .profile-list-item {
     background: white;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
@@ -109,5 +110,9 @@ $link-hover: #3E3E3E;
     box-shadow: 5px 5px 9px;
     margin-left: 20vw;
     width: 70%;
+  }
+
+  .group-list-item {
+    height: 75px;
   }
 }
