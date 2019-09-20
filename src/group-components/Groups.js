@@ -49,7 +49,6 @@ class Groups extends Component {
                     pathname: '/groups/' + group.id
                   }}>{group.sport}</Link></h3>
                   <p>{group.city}, {group.state}</p>
-                  <p>ID: {group.id}</p>
                 </Col>
                 <Col xs={2} className='p-2'>
                   <span className='mr-1'>{group.memberships.length}</span>
