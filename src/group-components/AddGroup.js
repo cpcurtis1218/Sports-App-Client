@@ -65,17 +65,23 @@ class AddGroup extends Component {
       <div className="group-form container">
         <h2>Create a New Group</h2>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor='sport'>Group Name</label>
-          <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange}/>
-          <label htmlFor='about'>Description</label>
-          <textarea value={about} type='string' name='about' onChange={this.handleChange}/>
+          <label htmlFor='sport'>
+            Group Name
+            <span>Characters Left: {sport.length}/50</span>
+          </label>
+          <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange} maxLength='50'/>
+          <label htmlFor='about'>
+            Description
+            <span>Characters Left: {about.length}/250</span>
+          </label>
+          <textarea value={about} type='string' name='about' onChange={this.handleChange} maxLength='250'/>
           <label htmlFor='city'>Location</label>
           <input required={true} value={city} type='string' name='city' placeholder='City' onChange={this.handleChange}/>
           <input required={true} value={state} type='string' name='state' placeholder='State' onChange={this.handleChange}/>
-          <label htmlFor='date'>Time</label>
+          <label style={{ 'width': 'auto' }} htmlFor='date'>Time</label>
           <div className='time-input'>
             <input required={true} value={date} type='date' name='date' onChange={this.handleChange}/>
-            <label htmlFor='time'>at</label>
+            <label style={{ 'width': 'auto' }} htmlFor='time'>at</label>
             <input required={true} value={time} type='time' name='time' onChange={this.handleChange}/>
           </div>
           <br/>
