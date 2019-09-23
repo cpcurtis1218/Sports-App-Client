@@ -64,12 +64,12 @@ class EditGroup extends Component {
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='sport'>
             Group Name
-            <span>Characters Left: {sport.length}/50</span>
+            <span>Characters: {sport.length}/50</span>
           </label>
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange} maxLength='50'/>
           <label htmlFor='about'>
             Description
-            <span>Characters Left: {about.length}/250</span>
+            <span>Characters: {about.length}/250</span>
           </label>
           <textarea value={about} type='string' name='about' onChange={this.handleChange} maxLength='250'/>
           <label htmlFor='city'>Location</label>
