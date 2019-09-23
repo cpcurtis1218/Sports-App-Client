@@ -42,7 +42,7 @@ class Groups extends Component {
             {groups.map(group => (
               <Row key={group.id} className='group-list-item'>
                 <Col xs={2} className='p-2'>
-                  <p>{group.time}</p>
+                  <p>{group.time.split(':')[0] < 12 ? group.time + 'AM' : (group.time.split(':')[0] - 12) + ':' + group.time.split(':')[1] + 'PM'}</p>
                   <p>{group.date.split('-')[1]}/{group.date.split('-')[2]}/{group.date.split('-')[0][2]}{group.date.split('-')[0][3]}</p>
                 </Col>
                 <Col xs={8} className='p-2'>
