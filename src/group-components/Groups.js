@@ -31,6 +31,19 @@ class Groups extends Component {
     return `${date.split('-')[1]}/${date.split('-')[2]}/${date.split('-')[0][2]}${date.split('-')[0][3]}`
   }
 
+  timeFormat (time) {
+    const timeArr = time.split(':')
+    if (timeArr[0] < 10) {
+      return timeArr[0][1] + ':' + timeArr[1] + 'AM'
+    } else if (timeArr[0] < 12) {
+      return time + 'AM'
+    } else if (timeArr[0] < 22) {
+      return timeArr[0] - 12 + ':' + timeArr[1] + 'PM'
+    } else {
+      return timeArr[0] - 12 + ':' + timeArr[1] + 'PM'
+    }
+  }
+
   render () {
     const { groups } = this.state
     if (!groups.length) {
@@ -46,7 +59,7 @@ class Groups extends Component {
             {groups.map(group => (
               <Row key={group.id} className='group-list-item'>
                 <Col xs={2} className='p-2'>
-                  <p>{group.time.split(':')[0] < 12 ? group.time + 'AM' : (group.time.split(':')[0] - 12) + ':' + group.time.split(':')[1] + 'PM'}</p>
+                  <p>{this.timeFormat(group.time)}</p>
                   <p>{this.dateFormat(group.date)}</p>
                 </Col>
                 <Col xs={8} className='p-2'>
