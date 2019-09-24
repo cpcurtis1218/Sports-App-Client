@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import PeopleIcon from '../assets/people-icon.png'
+import Methods from '../assets/Methods.js'
 
 import './Groups.scss'
 
@@ -120,10 +121,10 @@ class Group extends Component {
         <Container className='group-component'>
           <Row className='group-header'>
             <Col xs={9}>
-              <p className='date'>{date}</p>
+              <p className='date'>{Methods.dateFormat(date)}</p>
               <h2>{sport}</h2>
               <p>{city}, {state}</p>
-              <p>{time}</p>
+              <p>{Methods.timeFormat(time)}</p>
             </Col>
             <Col xs={3} className=''>
               <span className='mr-1'>{memberships.length}</span>
