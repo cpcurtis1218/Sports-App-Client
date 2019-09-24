@@ -27,6 +27,10 @@ class Groups extends Component {
       .catch(() => console.log('Something went wrong.'))
   }
 
+  dateFormat (date) {
+    return `${date.split('-')[1]}/${date.split('-')[2]}/${date.split('-')[0][2]}${date.split('-')[0][3]}`
+  }
+
   render () {
     const { groups } = this.state
     if (!groups.length) {
@@ -43,7 +47,7 @@ class Groups extends Component {
               <Row key={group.id} className='group-list-item'>
                 <Col xs={2} className='p-2'>
                   <p>{group.time.split(':')[0] < 12 ? group.time + 'AM' : (group.time.split(':')[0] - 12) + ':' + group.time.split(':')[1] + 'PM'}</p>
-                  <p>{group.date.split('-')[1]}/{group.date.split('-')[2]}/{group.date.split('-')[0][2]}{group.date.split('-')[0][3]}</p>
+                  <p>{this.dateFormat(group.date)}</p>
                 </Col>
                 <Col xs={8} className='p-2'>
                   <h3><Link to={{
