@@ -10,6 +10,7 @@ import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import Profile from './profile/Profile'
 
+import Explore from './explore/Explore.js'
 import Sidebar from './sidebar/Sidebar.js'
 
 import AddGroup from './group-components/AddGroup.js'
@@ -77,6 +78,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/groups/:id/edit' render={() => (
             <EditGroup user={user}/>
+          )} />
+          <Route exact path='/' render={() => (
+            <Explore user={user}/>
           )} />
         </main>
       </React.Fragment>
