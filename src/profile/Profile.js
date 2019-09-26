@@ -3,6 +3,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Methods from '../assets/Methods.js'
 
 class Profile extends Component {
   constructor (props) {
@@ -38,10 +39,14 @@ class Profile extends Component {
             <h2>My Groups:</h2>
             {myGroups.map(group => (
               <Row key={group.id} className='profile-list-item'>
-                <Col xs={8} className='p-2'>
+                <Col xs={2} className='p-2'>
+                  <p>{Methods.timeFormat(group.time)}</p>
+                  <p>{Methods.dateFormat(group.date)}</p>
+                </Col>
+                <Col className='p-2'>
                   <h3><Link to={{
                     pathname: '/groups/' + group.id
-                  }}>{group.sport.length > 12 ? group.sport.substring(0, 12) + '...' : group.sport}</Link></h3>
+                  }}>{group.sport}</Link></h3>
                 </Col>
               </Row>
             ))}
