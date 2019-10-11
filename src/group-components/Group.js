@@ -95,15 +95,18 @@ class Group extends Component {
         // set isMember to true, update the group to the new group
         return this.setState({ isMember: false, group: group })
       })
+      .then(() => this.handleClose())
       .then(() => console.log('Leave Success!'))
       .catch(() => console.log('Leave Failed'))
   }
 
   handleClose = () => this.setState({ showJoin: false, showLeave: false })
+
   handleShowJoin = () => this.setState({ showJoin: true })
+  handleShowLeave = () => this.setState({ showLeave: true })
 
   render () {
-    const { group, redirect, loading, isMember, showJoin } = this.state
+    const { group, redirect, loading, isMember, showJoin, showLeave } = this.state
     let buttonGroup
 
     if (loading) {
@@ -123,7 +126,7 @@ class Group extends Component {
         </React.Fragment>
       )
     } else if (isMember) {
-      buttonGroup = <Button variant='danger' onClick={() => this.handleLeave(group.id)}>Leave</Button>
+      buttonGroup = <Button variant='danger' onClick={this.handleShowLeave}>Leave</Button>
     } else {
       buttonGroup = <Button variant='secondary' onClick={this.handleShowJoin}>Join</Button>
     }
@@ -173,6 +176,20 @@ class Group extends Component {
               </Button>
               <Button variant='primary' onClick={() => this.handleJoin(group.id)}>
                 Join Group
+              </Button>
+            </Modal.Footer>
+          </Modal>
+          <Modal show={showLeave} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Leave Group: {sport}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to leave {sport}?</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Close
+              </Button>
+              <Button variant='danger' onClick={() => this.handleLeave(group.id)}>
+                Leave Group
               </Button>
             </Modal.Footer>
           </Modal>
