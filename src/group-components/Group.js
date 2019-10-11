@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter, Link, Redirect } from 'react-router-dom'
@@ -16,7 +16,8 @@ class Group extends Component {
       group: null,
       redirect: false,
       loading: true,
-      isMember: false
+      isMember: false,
+      show: false
     }
   }
 
@@ -69,6 +70,7 @@ class Group extends Component {
         // set isMember to true, update the group to the new group
         return this.setState({ isMember: true, group: group })
       })
+      .then(() => this.handleClose())
       .then(() => console.log('Join Success!'))
       .catch(() => console.log('Join Failed'))
   }
@@ -96,8 +98,11 @@ class Group extends Component {
       .catch(() => console.log('Leave Failed'))
   }
 
+  handleClose = () => this.setState({ show: false })
+  handleShow = () => this.setState({ show: true })
+
   render () {
-    const { group, redirect, loading, isMember } = this.state
+    const { group, redirect, loading, isMember, show } = this.state
     let buttonGroup
 
     if (loading) {
@@ -119,7 +124,7 @@ class Group extends Component {
     } else if (isMember) {
       buttonGroup = <Button variant='danger' onClick={() => this.handleLeave(group.id)}>Leave</Button>
     } else {
-      buttonGroup = <Button variant='secondary' onClick={() => this.handleJoin(group.id)}>Join</Button>
+      buttonGroup = <Button variant='secondary' onClick={this.handleShow}>Join</Button>
     }
 
     if (redirect) {
@@ -156,6 +161,20 @@ class Group extends Component {
               {buttonGroup}
             </Col>
           </Row>
+          <Modal show={show} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Join Group: {sport}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to join {sport}?</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Close
+              </Button>
+              <Button variant='primary' onClick={() => this.handleJoin(group.id)}>
+                Join Group
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Container>
       )
     }
