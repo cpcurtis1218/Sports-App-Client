@@ -74,18 +74,24 @@ class Group extends Component {
   }
 
   handleLeave = (groupId) => {
-    const { user } = this.props
-    const { memberships } = this.state.group
-    const memId = memberships.find((obj) => obj.user_id === user.id).id
+    const user = this.props.user
+    const group = this.state.group
+    const membership = group.memberships.find((obj) => obj.user_id === user.id)
 
     axios({
-      url: `${apiUrl}/memberships/${memId}`,
+      url: `${apiUrl}/memberships/${membership.id}`,
       method: 'delete',
       headers: {
         Authorization: 'Token token=' + user.token
       }
     })
-      .then(() => this.setState({ isMember: false }))
+      .then(() => {
+        const memIndex = group.memberships.indexOf(membership)
+        group.memberships.splice(memIndex, 1)
+
+        // set isMember to true, update the group to the new group
+        return this.setState({ isMember: false, group: group })
+      })
       .then(() => console.log('Leave Success!'))
       .catch(() => console.log('Join Failed'))
   }
