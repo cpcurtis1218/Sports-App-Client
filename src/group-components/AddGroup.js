@@ -72,9 +72,9 @@ class AddGroup extends Component {
           <input required={true} value={sport} type='string' name='sport' onChange={this.handleChange} maxLength='50'/>
           <label htmlFor='about'>
             Description
-            <span>Characters: {about.length}/250</span>
+            <span>Characters: {about.length}/500</span>
           </label>
-          <textarea value={about} type='string' name='about' onChange={this.handleChange} maxLength='250'/>
+          <textarea value={about} type='string' name='about' onChange={this.handleChange} maxLength='500'/>
           <label htmlFor='city'>Location</label>
           <input required={true} value={city} type='string' name='city' placeholder='City' onChange={this.handleChange}/>
           <input required={true} value={state} type='string' name='state' placeholder='State' onChange={this.handleChange}/>
