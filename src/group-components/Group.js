@@ -62,7 +62,13 @@ class Group extends Component {
         }
       }
     })
-      .then(() => this.setState({ isMember: true }))
+      .then((response) => {
+        const group = this.state.group
+        group.memberships.push(response.data.membership)
+
+        // set isMember to true, update the group to the new group
+        return this.setState({ isMember: true, group: group })
+      })
       .then(() => console.log('Join Success!'))
       .catch(() => console.log('Join Failed'))
   }
