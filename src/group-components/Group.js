@@ -93,7 +93,7 @@ class Group extends Component {
         return this.setState({ isMember: false, group: group })
       })
       .then(() => console.log('Leave Success!'))
-      .catch(() => console.log('Join Failed'))
+      .catch(() => console.log('Leave Failed'))
   }
 
   render () {
