@@ -34,7 +34,14 @@ class Groups extends Component {
     const groups = this.state.groups
     const value = event.target.value
 
-    const searchGroups = groups.filter(o => o.sport.toLowerCase().includes(value.toLowerCase()))
+    const searchGroups = groups.filter(o => {
+      const val = value.toLowerCase()
+      const sport = o.sport.toLowerCase()
+      const city = o.city.toLowerCase()
+      const state = o.state.toLowerCase()
+
+      return sport.includes(val) || city.includes(val) || state.includes(val)
+    })
     this.setState({ searchGroups: searchGroups, searchValue: value })
   }
 
