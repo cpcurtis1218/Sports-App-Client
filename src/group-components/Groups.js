@@ -13,7 +13,9 @@ class Groups extends Component {
     super()
 
     this.state = {
-      groups: []
+      groups: [],
+      searchValue: '',
+      searchGroups: []
     }
   }
 
@@ -28,8 +30,16 @@ class Groups extends Component {
       .catch(() => console.log('Something went wrong.'))
   }
 
+  onSearch = (event) => {
+    const groups = this.state.groups
+    const value = event.target.value
+
+    const searchGroups = groups.filter(o => o.sport.toLowerCase().includes(value.toLowerCase()))
+    this.setState({ searchGroups: searchGroups, searchValue: value })
+  }
+
   render () {
-    const { groups } = this.state
+    const { groups, searchValue, searchGroups } = this.state
     if (!groups.length) {
       return (
         <React.Fragment>
@@ -39,8 +49,9 @@ class Groups extends Component {
     } else {
       return (
         <React.Fragment>
+          <input placeholder='Search for a Group' style={{ 'marginLeft': '70px' }} onChange={this.onSearch} value={searchValue}/>
           <Container className='groups-list'>
-            {groups.map(group => (
+            {(searchGroups.length ? searchGroups : groups).map(group => (
               <Row key={group.id} className='group-list-item'>
                 <Col xs={2} className='p-2'>
                   <p>{Methods.timeFormat(group.time)}</p>
