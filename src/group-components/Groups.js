@@ -49,7 +49,13 @@ class Groups extends Component {
     } else {
       return (
         <React.Fragment>
-          <input placeholder='Search for a Group' style={{ 'marginLeft': '70px' }} onChange={this.onSearch} value={searchValue}/>
+          <Container className='groups-search'>
+            <Row>
+              <Col>
+                <input placeholder='Search for a Group' onChange={this.onSearch} value={searchValue}/>
+              </Col>
+            </Row>
+          </Container>
           <Container className='groups-list'>
             {(searchGroups.length ? searchGroups : groups).map(group => (
               <Row key={group.id} className='group-list-item'>
