@@ -106,6 +106,10 @@ $link-hover: #3E3E3E;
   }
 }
 
+.groups-search {
+  text-align: center;
+}
+
 .people-icon {
     height: 16px;
 }
@@ -122,5 +126,12 @@ $link-hover: #3E3E3E;
 
   .group-list-item {
     height: 75px;
+  }
+
+  .groups-search {
+    margin-bottom: 1rem;
+    margin-left: 20vw;
+    padding: 0;
+    text-align: left;
   }
 }
