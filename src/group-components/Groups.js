@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
-import { Link } from 'react-router-dom'
-import PeopleIcon from '../assets/people-icon.png'
 import { Container, Row, Col } from 'react-bootstrap'
-import Methods from '../assets/Methods.js'
+import GroupListItem from './GroupListItem'
 
 import './Groups.scss'
 
@@ -65,22 +63,7 @@ class Groups extends Component {
           </Container>
           <Container className='groups-list'>
             {(searchGroups.length ? searchGroups : groups).map(group => (
-              <Row key={group.id} className='group-list-item'>
-                <Col xs={2} className='p-2'>
-                  <p>{Methods.timeFormat(group.time)}</p>
-                  <p>{Methods.dateFormat(group.date)}</p>
-                </Col>
-                <Col xs={8} className='p-2'>
-                  <h3><Link to={{
-                    pathname: '/groups/' + group.id
-                  }}>{group.sport}</Link></h3>
-                  <p>{group.city}, {group.state}</p>
-                </Col>
-                <Col xs={2} className='p-2'>
-                  <span className='mr-1'>{group.memberships.length}</span>
-                  <img className='people-icon' src={PeopleIcon}/>
-                </Col>
-              </Row>
+              <GroupListItem key={group.id} group={group}/>
             ))}
           </Container>
         </React.Fragment>
