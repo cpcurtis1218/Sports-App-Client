@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Container, Button, Modal } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter, Redirect } from 'react-router-dom'
 import GroupItem from './GroupItem'
 import JoinModal from './modals/JoinModal'
+import LeaveModal from './modals/LeaveModal'
 
 import './Groups.scss'
 
@@ -117,7 +118,6 @@ class Group extends Component {
         pathname: '/groups/'
       }}/>
     } else {
-      const { sport } = group
       return (
         <Container className='group-component'>
           <GroupItem
@@ -128,21 +128,20 @@ class Group extends Component {
             handleShowLeave={this.handleShowLeave}
             handleDelete={this.handleDelete}
           />
-          <JoinModal group={group} show={showJoin} onHide={this.handleClose} handleJoin={this.handleJoin} handleClose={this.handleClose}/>
-          <Modal show={showLeave} onHide={this.handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Leave Group: {sport}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>Are you sure you want to leave {sport}?</Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
-                Close
-              </Button>
-              <Button variant='danger' onClick={() => this.handleLeave(group.id)}>
-                Leave Group
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          <JoinModal
+            group={group}
+            show={showJoin}
+            onHide={this.handleClose}
+            handleJoin={this.handleJoin}
+            handleClose={this.handleClose}
+          />
+          <LeaveModal
+            group={group}
+            show={showLeave}
+            onHide={this.handleClose}
+            handleLeave={this.handleLeave}
+            handleClose={this.handleClose}
+          />
         </Container>
       )
     }
