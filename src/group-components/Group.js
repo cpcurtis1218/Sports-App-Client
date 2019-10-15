@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import { withRouter, Redirect } from 'react-router-dom'
 import GroupItem from './GroupItem'
+import JoinModal from './modals/JoinModal'
 
 import './Groups.scss'
 
@@ -127,20 +128,7 @@ class Group extends Component {
             handleShowLeave={this.handleShowLeave}
             handleDelete={this.handleDelete}
           />
-          <Modal show={showJoin} onHide={this.handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Join Group: {sport}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>Are you sure you want to join {sport}?</Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
-                Close
-              </Button>
-              <Button variant='primary' onClick={() => this.handleJoin(group.id)}>
-                Join Group
-              </Button>
-            </Modal.Footer>
-          </Modal>
+          <JoinModal group={group} show={showJoin} onHide={this.handleClose} handleJoin={this.handleJoin} handleClose={this.handleClose}/>
           <Modal show={showLeave} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Leave Group: {sport}</Modal.Title>
