@@ -38,10 +38,10 @@ class Group extends Component {
       .catch(() => console.log('Something Went Wrong'))
   }
 
-  handleDelete = id => {
+  handleDelete = groupId => {
     const { user } = this.props
     axios({
-      url: `${apiUrl}/groups/${id}`,
+      url: `${apiUrl}/groups/${groupId}`,
       method: 'delete',
       headers: {
         Authorization: 'Token token=' + user.token
@@ -51,7 +51,7 @@ class Group extends Component {
       .catch(() => console.log('Nope'))
   }
 
-  handleJoin = (groupId) => {
+  handleJoin = groupId => {
     const { user } = this.props
     axios({
       url: `${apiUrl}/memberships/`,
@@ -77,7 +77,7 @@ class Group extends Component {
       .catch(() => console.log('Join Failed'))
   }
 
-  handleLeave = (groupId) => {
+  handleLeave = () => {
     const user = this.props.user
     const group = this.state.group
     const membership = group.memberships.find((obj) => obj.user_id === user.id)
@@ -101,8 +101,8 @@ class Group extends Component {
       .catch(() => console.log('Leave Failed'))
   }
 
+  // Modal methods
   handleClose = () => this.setState({ showJoin: false, showLeave: false })
-
   handleShowJoin = () => this.setState({ showJoin: true })
   handleShowLeave = () => this.setState({ showLeave: true })
 
