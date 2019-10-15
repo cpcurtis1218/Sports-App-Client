@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Button, Modal } from 'react-bootstrap'
+import { Container, Button, Modal } from 'react-bootstrap'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
-import { withRouter, Link, Redirect } from 'react-router-dom'
-import PeopleIcon from '../assets/people-icon.png'
-import Methods from '../assets/Methods.js'
+import { withRouter, Redirect } from 'react-router-dom'
+import GroupItem from './GroupItem'
 
 import './Groups.scss'
 
@@ -107,28 +106,9 @@ class Group extends Component {
 
   render () {
     const { group, redirect, loading, isMember, showJoin, showLeave } = this.state
-    let buttonGroup
 
     if (loading) {
       return <p>No Group Found!</p>
-    }
-
-    if (!this.props.user) {
-      buttonGroup = <p>Please Sign In to Join Group!</p>
-    } else if (this.props.user.id === group.user_id) {
-      buttonGroup = (
-        <React.Fragment>
-          <Button variant='danger' onClick={() => this.handleDelete(group.id)}>Delete</Button>
-          <Link to={{
-            pathname: '/groups/' + group.id + '/edit',
-            group: this.state.group
-          }}><Button variant='secondary'>Edit</Button></Link>
-        </React.Fragment>
-      )
-    } else if (isMember) {
-      buttonGroup = <Button variant='danger' onClick={this.handleShowLeave}>Leave</Button>
-    } else {
-      buttonGroup = <Button variant='secondary' onClick={this.handleShowJoin}>Join</Button>
     }
 
     if (redirect) {
@@ -136,35 +116,17 @@ class Group extends Component {
         pathname: '/groups/'
       }}/>
     } else {
-      const { about, sport, city, state, date, time, memberships } = group
-      const ownerId = group.user_id
+      const { sport } = group
       return (
         <Container className='group-component'>
-          <Row className='group-header'>
-            <Col xs={9}>
-              <p className='date'>{Methods.dateFormat(date)}</p>
-              <h2>{sport}</h2>
-              <p>{city}, {state}</p>
-              <p>{Methods.timeFormat(time)}</p>
-            </Col>
-            <Col xs={3} className=''>
-              <span className='mr-1'>{memberships.length}</span>
-              <img className='people-icon' src={PeopleIcon}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p>{about}</p>
-            </Col>
-          </Row>
-          <Row className=''>
-            <Col>
-              <p>Owner: {ownerId}</p>
-            </Col>
-            <Col className='button-group'>
-              {buttonGroup}
-            </Col>
-          </Row>
+          <GroupItem
+            group={group}
+            user={this.props.user}
+            isMember={isMember}
+            handleShowJoin={this.handleShowJoin}
+            handleShowLeave={this.handleShowLeave}
+            handleDelete={this.handleDelete}
+          />
           <Modal show={showJoin} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Join Group: {sport}</Modal.Title>
