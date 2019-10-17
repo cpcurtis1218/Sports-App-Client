@@ -1,5 +1,9 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
+// import './Explore.scss'
+import { testMarkerStyle } from './testMarkerStyle.js'
+
+const NewMarker = ({ text }) => <div style={testMarkerStyle}>{text}</div>
 
 const Explore = ({ user }) => (
   <div>
@@ -16,6 +20,11 @@ const Explore = ({ user }) => (
         defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
         defaultZoom={12}
       >
+        <NewMarker
+          lat={42.325}
+          lng={-71.05}
+          text='Test Marker'
+        />
       </GoogleMapReact>
     </div>
   </div>
