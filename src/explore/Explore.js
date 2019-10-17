@@ -12,6 +12,7 @@ const Explore = ({ user }) => (
     </div>
     <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '250px', 'marginTop': '2rem' }}>
       <GoogleMapReact
+        // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
         defaultZoom={12}
       >
