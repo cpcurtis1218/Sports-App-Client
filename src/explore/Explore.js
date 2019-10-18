@@ -1,5 +1,5 @@
 import React from 'react'
-import GoogleMapReact from 'google-map-react'
+import GroupMap from '../map/GroupMap'
 // import './Explore.scss'
 import { testMarkerStyle } from './testMarkerStyle.js'
 
@@ -15,7 +15,7 @@ const Explore = ({ user }) => (
       and invite others to join you!
     </div>
     <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '250px', 'marginTop': '2rem' }}>
-      <GoogleMapReact
+      <GroupMap
         // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
         defaultZoom={12}
@@ -25,7 +25,7 @@ const Explore = ({ user }) => (
           lng={-71.05}
           text='Test Marker'
         />
-      </GoogleMapReact>
+      </GroupMap>
     </div>
   </div>
 )
