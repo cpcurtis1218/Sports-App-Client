@@ -1,5 +1,12 @@
 import React from 'react'
-import GroupMap from '../map/GroupMap'
+// import GroupMap from '../map/GroupMap'
+
+// <GroupMap
+//   // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+//   defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
+//   defaultZoom={12}
+// >
+// </GroupMap>
 
 const Explore = ({ user }) => (
   <div>
@@ -11,12 +18,6 @@ const Explore = ({ user }) => (
       and invite others to join you!
     </div>
     <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '250px', 'marginTop': '2rem' }}>
-      <GroupMap
-        // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
-        defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
-        defaultZoom={12}
-      >
-      </GroupMap>
     </div>
   </div>
 )
