@@ -22,7 +22,7 @@ const markerList = [
 
 const GroupMap = (props) => (
   <GoogleMapReact
-    // bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
+    bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
     defaultCenter={props.defaultCenter}
     defaultZoom={props.defaultZoom}
   >
