@@ -69,8 +69,17 @@ class AddGroup extends Component {
 
   handleGeoSubmit = (event) => {
     event.preventDefault()
+    const { searchLocation } = this.state
 
-    console.log('event is', event.target)
+    const geocoder = new window.google.maps.Geocoder()
+
+    geocoder.geocode({ 'address': searchLocation.city }, function (results, status) {
+      if (status === 'OK') {
+        console.log('results is ', results)
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status)
+      }
+    })
   }
 
   render () {
@@ -84,10 +93,9 @@ class AddGroup extends Component {
     return (
       <div className="group-form container">
         <h2>Create a New Group</h2>
-        <form>
+        <form onSubmit={this.handleGeoSubmit}>
           <label htmlFor='city'>Location</label>
           <input required={true} value={searchLocation.city} type='string' name='city' placeholder='City' onChange={this.handleLocationChange}/>
-          <input required={true} value={searchLocation.state} type='string' name='state' placeholder='State' onChange={this.handleLocationChange}/>
           <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '10px' }}>
             <GroupMap
               defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
