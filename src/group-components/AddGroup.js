@@ -21,8 +21,7 @@ class AddGroup extends Component {
       },
       newId: null,
       searchLocation: {
-        city: '',
-        state: ''
+        address: ''
       }
     }
   }
@@ -69,17 +68,30 @@ class AddGroup extends Component {
 
   handleGeoSubmit = (event) => {
     event.preventDefault()
-    const { searchLocation } = this.state
+    const searchLocation = this.state.searchLocation
 
     const geocoder = new window.google.maps.Geocoder()
 
-    geocoder.geocode({ 'address': searchLocation.city }, function (results, status) {
+    geocoder.geocode({ 'address': searchLocation.address }, function (results, status) {
       if (status === 'OK') {
+        const searchLocation = this.state.searchLocation
+        searchLocation.address = results[0].formatted_address
+
+        const group = this.state.group
+        group.city = results[0].formatted_address.split(', ')[0]
+        group.state = results[0].formatted_address.match(/[A-Z][A-Z]/)[0]
+
         console.log('results is ', results)
+        console.log('group.city is ', group.city)
+        console.log('group.state is ', group.state)
+        this.setState({
+          group: group,
+          searchLocation: searchLocation
+        })
       } else {
         alert('Geocode was not successful for the following reason: ' + status)
       }
-    })
+    }.bind(this))
   }
 
   render () {
@@ -95,7 +107,7 @@ class AddGroup extends Component {
         <h2>Create a New Group</h2>
         <form onSubmit={this.handleGeoSubmit}>
           <label htmlFor='city'>Location</label>
-          <input required={true} value={searchLocation.city} type='string' name='city' placeholder='City' onChange={this.handleLocationChange}/>
+          <input required={true} value={searchLocation.address} type='string' name='address' placeholder='City, State (ex: Boston, MA)' onChange={this.handleLocationChange}/>
           <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '10px' }}>
             <GroupMap
               defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
