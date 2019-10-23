@@ -44,9 +44,6 @@ class AddGroup extends Component {
     const { group } = this.state
     const { user } = this.props
 
-    group.city = this.state.searchLocation.city
-    group.state = this.state.searchLocation.state
-
     axios({
       url: `${apiUrl}/groups`,
       method: 'post',
@@ -74,19 +71,19 @@ class AddGroup extends Component {
 
     geocoder.geocode({ 'address': searchLocation.address }, function (results, status) {
       if (status === 'OK') {
+        // update searchLocation to match response from maps API
         const searchLocation = this.state.searchLocation
         searchLocation.address = results[0].formatted_address
+        this.setState({
+          searchLocation: searchLocation
+        })
 
+        // update group city and state fields
         const group = this.state.group
         group.city = results[0].formatted_address.split(', ')[0]
         group.state = results[0].formatted_address.match(/[A-Z][A-Z]/)[0]
-
-        console.log('results is ', results)
-        console.log('group.city is ', group.city)
-        console.log('group.state is ', group.state)
         this.setState({
-          group: group,
-          searchLocation: searchLocation
+          group: group
         })
       } else {
         alert('Geocode was not successful for the following reason: ' + status)
