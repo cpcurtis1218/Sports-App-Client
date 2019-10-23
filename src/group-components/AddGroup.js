@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../apiConfig'
 import Button from 'react-bootstrap/Button'
-import GroupMap from '../map/GroupMap.js'
+import MapContainer from '../map/MapContainer.js'
 
 class AddGroup extends Component {
   constructor (props) {
@@ -22,6 +22,12 @@ class AddGroup extends Component {
       newId: null,
       searchLocation: {
         address: ''
+      },
+      map: {
+        center: {
+          lat: null,
+          lng: null
+        }
       }
     }
   }
@@ -71,6 +77,7 @@ class AddGroup extends Component {
 
     geocoder.geocode({ 'address': searchLocation.address }, function (results, status) {
       if (status === 'OK') {
+        console.log('results is ', results)
         // update searchLocation to match response from maps API
         const searchLocation = this.state.searchLocation
         searchLocation.address = results[0].formatted_address
@@ -84,6 +91,16 @@ class AddGroup extends Component {
         group.state = results[0].formatted_address.match(/[A-Z][A-Z]/)[0]
         this.setState({
           group: group
+        })
+
+        const center = {
+          lat: results[0].geometry.location.lat(),
+          lng: results[0].geometry.location.lng()
+        }
+        this.setState({
+          map: {
+            center: center
+          }
         })
       } else {
         alert('Geocode was not successful for the following reason: ' + status)
@@ -105,15 +122,14 @@ class AddGroup extends Component {
         <form onSubmit={this.handleGeoSubmit}>
           <label htmlFor='city'>Location</label>
           <input required={true} value={searchLocation.address} type='string' name='address' placeholder='City, State (ex: Boston, MA)' onChange={this.handleLocationChange}/>
-          <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '10px' }}>
-            <GroupMap
-              defaultCenter={{ lat: 42.3512354, lng: -71.0584297 }}
-              defaultZoom={12}
-            >
-            </GroupMap>
-          </div>
           <Button className="secondary" type='submit'>Submit</Button>
         </form>
+        <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '10px' }}>
+          <MapContainer
+            center={this.state.map.center}
+          >
+          </MapContainer>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='sport'>
             Group Name
