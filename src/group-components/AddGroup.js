@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../apiConfig'
 import Button from 'react-bootstrap/Button'
 import MapContainer from '../map/MapContainer.js'
+import './Groups.scss'
 
 class AddGroup extends Component {
   constructor (props) {
@@ -124,9 +125,13 @@ class AddGroup extends Component {
           <input required={true} value={searchLocation.address} type='string' name='address' placeholder='City, State (ex: Boston, MA)' onChange={this.handleLocationChange}/>
           <Button className="secondary" type='submit'>Submit</Button>
         </form>
-        <div style={{ 'height': '500px', 'width': '500px', 'marginLeft': '10px' }}>
+        <div className='map-div'>
           <MapContainer
             center={this.state.map.center}
+            style={{
+              width: '500px',
+              height: '500px'
+            }}
           >
           </MapContainer>
         </div>
