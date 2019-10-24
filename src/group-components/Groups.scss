@@ -30,6 +30,7 @@ $link-hover: #3E3E3E;
 }
 
 .group-form {
+
   padding: 8px;
 
   h2 {
@@ -63,6 +64,17 @@ $link-hover: #3E3E3E;
 
     label {
       margin: 0 8px;
+    }
+  }
+
+  .map-div {
+    height: 500px;
+    margin-left: 10px;
+    width: 500px;
+
+    > div > div {
+      height: inherit !important;
+      width: inherit !important;
     }
   }
 }
