@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, GoogleApiWrapper } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 
 const mapStyles = {
   width: '500px',
@@ -26,6 +26,21 @@ class MapContainer extends Component {
     }
   }
 
+  onMarkerDragEnd = (coordinates) => {
+    const { latLng } = coordinates
+    const lat = latLng.lat()
+    const lng = latLng.lng()
+
+    const center = {
+      lat: lat,
+      lng: lng
+    }
+
+    this.setState({
+      center: center
+    })
+  }
+
   render () {
     return (
       <Map
@@ -37,7 +52,14 @@ class MapContainer extends Component {
           lng: -71.0584297
         }}
         center={this.state.center}
-      />
+      >
+        <Marker
+          name={'Current Location'}
+          position={this.state.center}
+          draggable
+          onDragend={(t, map, coordinates) => this.onMarkerDragEnd(coordinates)}
+        />
+      </Map>
     )
   }
 }
